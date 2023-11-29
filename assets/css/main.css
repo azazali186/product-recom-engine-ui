@@ -10,7 +10,6 @@
 .header {
   top: 0;
   position: sticky;
-  border-bottom: 2px solid var(--primary-border);
 }
 
 .header-right-menu {
@@ -28,12 +27,13 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  color: gray;
 }
 
 .profile-image {
   height: 40px;
   width: 40px;
-  border: 2px solid #000000;
+  border: 2px solid grey;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,18 @@
   position: absolute;
   border-bottom: 2px solid var(--primary-border);
   display: flex;
+  flex-direction: column;
+}
+
+.footer-country {
+  font-size: 18px;
+  color: gray;
+}
+
+.footer-links {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .footer-right-menu {
@@ -73,6 +84,7 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  color: gray;
 }
 
 .footer-left-menu {
@@ -91,32 +103,54 @@
   align-items: center;
   height: 80vh;
   position: relative;
+  flex-direction: column;
 }
 
 .search-engine-search {
   min-width: 40%;
-  border: 3px solid gray;
-  line-height: 50px;
+  border: 1px solid transparent;
+  line-height: 40px;
   border-radius: 50px;
   padding: 0 15px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  z-index: 3;
+  margin: 0 auto;
+  width: 638px;
+  width: auto;
 }
 
 .search-engine-input-box {
   border-radius: 50px;
   padding: 5px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   outline: none;
-  min-width: 82%;
   color: gray;
+}
+
+.mw-700{
+  min-width: 720px;
+}
+
+.mw-500{
+  min-width: 500px;
+}
+
+.sp:hover {
+  box-shadow: rgba(72, 187, 120, 0.09) 0px 2px 1px,
+    rgba(72, 187, 120, 0.09) 0px 4px 2px, rgba(72, 187, 120, 0.09) 0px 8px 4px,
+    rgba(72, 187, 120, 0.09) 0px 16px 8px,
+    rgba(72, 187, 120, 0.09) 0px 32px 16px;
+  background: linear-gradient(to bottom right, #48bb78, #4299e1);
+  border-color: transparent;
 }
 
 .search-engine-select-box {
   border-radius: 50px;
   padding: 5px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   min-width: 30%;
   color: gray;
@@ -124,9 +158,25 @@
 }
 
 .search-engine-search-box-icon {
-  min-width: 5%;
+  min-width: 3.5%;
   color: gray;
-  min-height: 50px;
+  min-height: 20px;
   display: flex;
   flex-direction: row-reverse;
+}
+.mh-30 {
+  min-height: 30px !important;
+  margin-right: 10px;
+}
+
+.color-search {
+  color: #4ad887;
+}
+
+.color-mic {
+  color: #3daeaf;
+}
+
+.color-camera {
+  color: #286be6;
 }
