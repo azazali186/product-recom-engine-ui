@@ -37,6 +37,8 @@ const product = ref({
     { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+3" },
     { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+4" },
     { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+5" },
+    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+6" },
+    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+7" },
   ],
   status: "In Stock",
   category: "Electronics",
