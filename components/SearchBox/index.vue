@@ -25,12 +25,13 @@
       </button>
     </div>
   </div>
-  <div v-else class="px-10 py-2">Hello Data info</div>
+  <div v-else class="px-10 py-2 flex justify-center"><ProductsListVue /></div>
 </template>
 
 <script setup>
 
 import SearchInputBox from "./SearchInputBox";
+import ProductsListVue from "../ProductList"
 const data = inject("data");
 
 const clas = " rounded-[50px] w-[40%] p-0.5 sp ";

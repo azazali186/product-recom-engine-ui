@@ -1,7 +1,9 @@
 <template>
   <div>
     <HeaderVue />
-    <slot />
+    <div class="h-[84vh] overflow-y-scroll">
+      <slot />
+    </div>
     <FooterVue />
   </div>
 </template>

@@ -14,7 +14,7 @@
       <input
         v-model="search"
         type="text"
-        class="search-engine-input-box mw-300"
+        class="search-engine-input-box mw-290"
         placeholder="Search your needed products..."
         ref="searchInput"
       />
