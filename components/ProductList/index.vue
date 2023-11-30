@@ -32,7 +32,7 @@
         </USelectMenu>
       </div>
     </div>
-    <div class="flex justify-center my-2 flex-wrap">
+    <div class="flex justify-center my-2 gap-10 relative flex-wrap">
       <ProductCardVue v-for="product in products" :data="product" />
     </div>
   </div>
