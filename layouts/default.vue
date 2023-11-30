@@ -1,10 +1,8 @@
 <template>
   <div>
-    <AppHeader />
     <HeaderVue />
     <slot />
     <FooterVue />
-    <AppFooter />
   </div>
 </template>
 

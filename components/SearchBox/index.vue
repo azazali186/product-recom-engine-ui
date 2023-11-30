@@ -25,24 +25,13 @@
       </button>
     </div>
   </div>
-  <div v-else class="px-10 py-2">
-    Hello Data info
-  </div>
+  <div v-else class="px-10 py-2">Hello Data info</div>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import SearchInputBox from "./SearchInputBox";
 
-const search = ref("");
-const input = ref(false);
+import SearchInputBox from "./SearchInputBox";
 const data = inject("data");
 
 const clas = " rounded-[50px] w-[40%] p-0.5 sp ";
-
-watch(search, () => {
-  if (search.value.length > 2) {
-    searchFunction();
-  }
-});
 </script>
