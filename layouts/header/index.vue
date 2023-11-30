@@ -3,7 +3,7 @@
     class="header border-b-2 py-1 border-t-grey-400 px-10 space-between items-center"
   >
     <div v-if="data" :class="data ? 'header-right-menu' : 'hidden'">
-      <div class="flex justify-start">
+      <div class="flex justify-start relative">
         <SearchBoxHeaderSearchInputBox />
       </div>
     </div>

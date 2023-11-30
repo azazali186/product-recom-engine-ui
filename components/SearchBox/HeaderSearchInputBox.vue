@@ -1,3 +1,7 @@
+
+import type { SearchBox } from '#build/components';
+
+import type { SearchBox } from '#build/components';
 <template>
   <div
     :class="
@@ -6,7 +10,7 @@
         : 'bg-gray-300' + clas
     "
   >
-    <div class="search-engine-search w-full bg-white">
+    <div class="search-engine-search relative w-full bg-white">
       <Icon
         class="search-engine-search-box-icon color-search"
         name="heroicons-solid:search"
@@ -25,13 +29,17 @@
         placeholder="Select Category"
         value-attribute="id"
         option-attribute="label"
-        class="search-engine-select-box"
+        class="search-engine-select-box z-50 relative"
         selected-icon="i-heroicons-hand-thumb-up-solid"
         searchable
         searchable-placeholder="Search by name or favorite colors"
         :search-attributes="['label']"
+        :popper="{ offsetDistance: 0, placement: 'right-end' }"
       >
-        <UButton color="gray" class="flex-1 justify-between search-engine-select-box-button">
+        <UButton
+          color="gray"
+          class="flex-1 justify-between search-engine-select-box-button"
+        >
           {{ current.label }}
           <UIcon
             name="i-heroicons-chevron-right-20-solid"
@@ -55,7 +63,6 @@
     </div>
   </div>
 </template>
-
 
 <script setup>
 import { ref, watch } from "vue";
@@ -146,11 +153,9 @@ const cat = [
 
 const selected = ref(cat[0].id);
 
-const current = computed(() =>
-  cat.find((ct) => ct.id === selected.value)
-);
+const current = computed(() => cat.find((ct) => ct.id === selected.value));
 
-const clas = " rounded-[50px] p-0.5 sp ";
+const clas = " rounded-[50px] p-0.5 sp relative ";
 
 const handleClickOutside = (event) => {
   if (searchInput.value && !searchInput.value.contains(event.target)) {
@@ -164,6 +169,13 @@ watch(search, () => {
   if (search.value.length > 2) {
     searchFunction();
   }
+  if(search.value.length == 0){
+    resetFunction();
+  }
+});
+
+watch(selected, () => {
+    searchFunction();  
 });
 
 onMounted(() => {
@@ -173,5 +185,14 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
 });
-</script>
 
+const searchFunction = () => {
+  console.log("Search is ", search.value);
+  console.log("selected is ", selected.value);
+  console.log("Search is called");
+};
+
+const resetFunction = () => {
+  console.log("Reset is called");
+}; 
+</script>
