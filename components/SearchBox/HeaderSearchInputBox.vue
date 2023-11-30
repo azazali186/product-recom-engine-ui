@@ -1,5 +1,3 @@
-import type { SearchBox } from '#build/components'; import type { SearchBox }
-from '#build/components';
 <template>
   <div
     :class="
