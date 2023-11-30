@@ -1,7 +1,5 @@
-
-import type { SearchBox } from '#build/components';
-
-import type { SearchBox } from '#build/components';
+import type { SearchBox } from '#build/components'; import type { SearchBox }
+from '#build/components';
 <template>
   <div
     :class="
@@ -10,7 +8,7 @@ import type { SearchBox } from '#build/components';
         : 'bg-gray-300' + clas
     "
   >
-    <div class="search-engine-search relative w-full bg-white">
+    <div class="search-engine-search w-full bg-white">
       <Icon
         class="search-engine-search-box-icon color-search"
         name="heroicons-solid:search"
@@ -18,7 +16,7 @@ import type { SearchBox } from '#build/components';
       <input
         v-model="search"
         type="text"
-        class="search-engine-input-box mw-290"
+        class="search-engine-input-box min-w-[290px]"
         placeholder="Search your needed products..."
         ref="searchInput"
       />
@@ -29,12 +27,20 @@ import type { SearchBox } from '#build/components';
         placeholder="Select Category"
         value-attribute="id"
         option-attribute="label"
-        class="search-engine-select-box z-50 relative"
+        class="search-engine-select-box relative"
         selected-icon="i-heroicons-hand-thumb-up-solid"
         searchable
         searchable-placeholder="Search by name or favorite colors"
         :search-attributes="['label']"
-        :popper="{ offsetDistance: 0, placement: 'right-end' }"
+        :popper="{
+          offsetDistance: 0,
+          placement: 'left-end',
+          modifiers: {
+            offset: { offset: '0,10' },
+            preventOverflow: { boundariesElement: 'viewport' },
+            zIndex: { enabled: true, base: 2000 },
+          },
+        }"
       >
         <UButton
           color="gray"
@@ -169,13 +175,13 @@ watch(search, () => {
   if (search.value.length > 2) {
     searchFunction();
   }
-  if(search.value.length == 0){
+  if (search.value.length == 0) {
     resetFunction();
   }
 });
 
 watch(selected, () => {
-    searchFunction();  
+  searchFunction();
 });
 
 onMounted(() => {
@@ -194,5 +200,5 @@ const searchFunction = () => {
 
 const resetFunction = () => {
   console.log("Reset is called");
-}; 
+};
 </script>
