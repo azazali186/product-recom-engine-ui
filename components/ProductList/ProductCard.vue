@@ -70,8 +70,5 @@ const url = "/products/" + product?.value?.id;
 
 const images = product.value.images;
 
-const currentSlide = ref(0);
-const totalSlides = ref(0);
-
 var val = Math.floor(1000 + Math.random() * 3000);
 </script>
