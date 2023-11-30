@@ -32,7 +32,7 @@
         </USelectMenu>
       </div>
     </div>
-    <div class="flex justify-center my-10 flex-wrap">
+    <div class="flex justify-center my-2 flex-wrap">
       <ProductCardVue v-for="product in products" :data="product" />
     </div>
   </div>
@@ -67,6 +67,7 @@ const filters = [
   },
 ];
 const selected = ref(filters[0].id);
+
 
 const current = computed(() => filters.find((ct) => ct.id === selected.value));
 
