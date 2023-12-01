@@ -1,7 +1,9 @@
 <template>
   <div class="flip-card">
     <div class="flip-card-inner">
-      <div class="flip-card-front text-xs shadow-green-400 cursor-pointer shadow-sm m-5 p-5 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600 transition-shadow ease-in-out">
+      <div
+        class="flip-card-front text-xs shadow-green-400 cursor-pointer shadow-sm m-5 p-5 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600 transition-shadow ease-in-out"
+      >
         <div>
           <Swiper
             :modules="[SwiperAutoplay, SwiperEffectCreative]"
@@ -23,7 +25,11 @@
             }"
           >
             <SwiperSlide v-for="slide in images" :key="slide">
-              <img :src="slide.url" class="py-2 object-contain" :alt="product.title">
+              <img
+                :src="slide.url"
+                class="py-2 object-contain"
+                :alt="product.title"
+              />
             </SwiperSlide>
           </Swiper>
         </div>
@@ -37,7 +43,9 @@
               }}</b></ULink
             >
           </span>
-          <span class="flex justify-between items-center w-full text-[13px] mt-2">
+          <span
+            class="flex justify-between items-center w-full text-[13px] mt-2"
+          >
             <div class="flex gap-1 items-center">
               <b>Price: </b>
               <span class="text-green-600 text-base font-bold">{{
@@ -49,8 +57,9 @@
       </div>
 
       <!-- Back side of the card -->
-      <div class="flip-card-back text-xs shadow-green-400 cursor-pointer shadow-sm m-5 p-5 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600 transition-shadow ease-in-out">
-        
+      <div
+        class="flip-card-back text-xs shadow-green-400 cursor-pointer shadow-sm m-5 p-5 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600 transition-shadow ease-in-out"
+      >
         <div>
           <p class="text-2xl">{{ product.title }}</p>
         </div>
@@ -70,5 +79,5 @@ const url = "/products/" + product?.value?.id;
 
 const images = product.value.images;
 
-var val = Math.floor(1000 + Math.random() * 3000);
+var val = Math.floor(1000 + Math.random() * 10000);
 </script>

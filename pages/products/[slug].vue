@@ -21,7 +21,7 @@ import { onMounted } from "vue";
 
 import ImageSlider from "../../components/ProductDetails/imageSlider";
 import TopDetails from "../../components/ProductDetails/TopDetails";
-
+// https://picsum.photos/720/1080?random=100.webp
 const route = useRoute();
 const productId = ref(route.params.slug);
 const product = ref({
@@ -31,16 +31,16 @@ const product = ref({
   currency: "$",
   quantity: 12,
   images: [
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+1" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+2" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+3" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+4" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+5" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+6" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+7" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+8" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+9" },
-    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+10" },
+    { url: "https://picsum.photos/720/1080?random=101.webp" },
+    { url: "https://picsum.photos/720/1080?random=102.webp" },
+    { url: "https://picsum.photos/720/1080?random=103.webp" },
+    { url: "https://picsum.photos/720/1080?random=104.webp" },
+    { url: "https://picsum.photos/720/1080?random=105.webp" },
+    { url: "https://picsum.photos/720/1080?random=106.webp" },
+    { url: "https://picsum.photos/720/1080?random=107.webp" },
+    { url: "https://picsum.photos/720/1080?random=108.webp" },
+    { url: "https://picsum.photos/720/1080?random=109.webp" },
+    { url: "https://picsum.photos/720/1080?random=110.webp" },
   ],
   status: "In Stock",
   category: "Electronics",

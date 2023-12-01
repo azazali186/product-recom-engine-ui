@@ -80,34 +80,34 @@ const products = [
     quantity: 50,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+1",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+2",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+3",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+4",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+5",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+5.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+6",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+6.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+7",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+7.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+8",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+8.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+9",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+9.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Exclusive+mobile+with+awesome+features+10",
+        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+10.webp",
       },
     ],
   },
@@ -119,34 +119,34 @@ const products = [
     quantity: 30,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+1",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+2",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+3",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+4",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+5",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+5.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+6",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+6.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+7",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+7.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+8",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+8.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+9",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+9.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=High-end+Smartphone+with+Advanced+Features+10",
+        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+10.webp",
       },
     ],
   },
@@ -158,34 +158,34 @@ const products = [
     quantity: 20,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+1",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+2",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+3",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+4",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+5",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+5.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+6",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+6.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+7",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+7.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+8",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+8.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+9",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+9.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Premium+Camera+Phone+10",
+        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+10.webp",
       },
     ],
   },
@@ -197,34 +197,34 @@ const products = [
     quantity: 50,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+1",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+2",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+3",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+4",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+5",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+5.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+6",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+6.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+7",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+7.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+8",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+8.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+9",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+9.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Fitness+Tracker+10",
+        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+10.webp",
       },
     ],
   },
@@ -236,19 +236,19 @@ const products = [
     quantity: 15,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Gaming+Laptop+1",
+        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Gaming+Laptop+2",
+        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Gaming+Laptop+3",
+        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Gaming+Laptop+4",
+        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Gaming+Laptop+5",
+        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+5.webp",
       },
     ],
   },
@@ -260,19 +260,19 @@ const products = [
     quantity: 25,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Noise-Canceling+Headphones+1",
+        url: "https://picsum.photos/720/1080?random=Noise-Canceling+Headphones+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Noise-Canceling+Headphones+2",
+        url: "https://picsum.photos/720/1080?random=Noise-Canceling+Headphones+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Noise-Canceling+Headphones+3",
+        url: "https://picsum.photos/720/1080?random=Noise-Canceling+Headphones+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Noise-Canceling+Headphones+4",
+        url: "https://picsum.photos/720/1080?random=Noise-Canceling+Headphones+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Noise-Canceling+Headphones+5",
+        url: "https://picsum.photos/720/1080?random=Noise-Canceling+Headphones+5.webp",
       },
     ],
   },
@@ -283,11 +283,11 @@ const products = [
     currency: "$",
     quantity: 20,
     images: [
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Ultrabook+1" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Ultrabook+2" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Ultrabook+3" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Ultrabook+4" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Ultrabook+5" },
+      { url: "https://picsum.photos/720/1080?random=Ultrabook+1.webp" },
+      { url: "https://picsum.photos/720/1080?random=Ultrabook+2.webp" },
+      { url: "https://picsum.photos/720/1080?random=Ultrabook+3.webp" },
+      { url: "https://picsum.photos/720/1080?random=Ultrabook+4.webp" },
+      { url: "https://picsum.photos/720/1080?random=Ultrabook+5.webp" },
     ],
   },
   {
@@ -298,19 +298,19 @@ const products = [
     quantity: 18,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Security+Camera+1",
+        url: "https://picsum.photos/720/1080?random=Security+Camera+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Security+Camera+2",
+        url: "https://picsum.photos/720/1080?random=Security+Camera+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Security+Camera+3",
+        url: "https://picsum.photos/720/1080?random=Security+Camera+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Security+Camera+4",
+        url: "https://picsum.photos/720/1080?random=Security+Camera+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Security+Camera+5",
+        url: "https://picsum.photos/720/1080?random=Security+Camera+5.webp",
       },
     ],
   },
@@ -322,19 +322,19 @@ const products = [
     quantity: 35,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Bluetooth+Speaker+1",
+        url: "https://picsum.photos/720/1080?random=Bluetooth+Speaker+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Bluetooth+Speaker+2",
+        url: "https://picsum.photos/720/1080?random=Bluetooth+Speaker+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Bluetooth+Speaker+3",
+        url: "https://picsum.photos/720/1080?random=Bluetooth+Speaker+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Bluetooth+Speaker+4",
+        url: "https://picsum.photos/720/1080?random=Bluetooth+Speaker+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Bluetooth+Speaker+5",
+        url: "https://picsum.photos/720/1080?random=Bluetooth+Speaker+5.webp",
       },
     ],
   },
@@ -345,11 +345,11 @@ const products = [
     currency: "$",
     quantity: 12,
     images: [
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+TV+1" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+TV+2" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+TV+3" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+TV+4" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+TV+5" },
+      { url: "https://picsum.photos/720/1080?random=Smart+TV+1.webp" },
+      { url: "https://picsum.photos/720/1080?random=Smart+TV+2.webp" },
+      { url: "https://picsum.photos/720/1080?random=Smart+TV+3.webp" },
+      { url: "https://picsum.photos/720/1080?random=Smart+TV+4.webp" },
+      { url: "https://picsum.photos/720/1080?random=Smart+TV+5.webp" },
     ],
   },
   {
@@ -359,11 +359,11 @@ const products = [
     currency: "$",
     quantity: 8,
     images: [
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=DSLR+Camera+1" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=DSLR+Camera+2" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=DSLR+Camera+3" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=DSLR+Camera+4" },
-      { url: "https://dummyimage.com/720x1080/000/fff.png&text=DSLR+Camera+5" },
+      { url: "https://picsum.photos/720/1080?random=DSLR+Camera+1.webp" },
+      { url: "https://picsum.photos/720/1080?random=DSLR+Camera+2.webp" },
+      { url: "https://picsum.photos/720/1080?random=DSLR+Camera+3.webp" },
+      { url: "https://picsum.photos/720/1080?random=DSLR+Camera+4.webp" },
+      { url: "https://picsum.photos/720/1080?random=DSLR+Camera+5.webp" },
     ],
   },
   {
@@ -374,19 +374,19 @@ const products = [
     quantity: 20,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Espresso+Machine+1",
+        url: "https://picsum.photos/720/1080?random=Espresso+Machine+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Espresso+Machine+2",
+        url: "https://picsum.photos/720/1080?random=Espresso+Machine+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Espresso+Machine+3",
+        url: "https://picsum.photos/720/1080?random=Espresso+Machine+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Espresso+Machine+4",
+        url: "https://picsum.photos/720/1080?random=Espresso+Machine+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Espresso+Machine+5",
+        url: "https://picsum.photos/720/1080?random=Espresso+Machine+5.webp",
       },
     ],
   },
@@ -398,19 +398,19 @@ const products = [
     quantity: 30,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Ergonomic+Chair+1",
+        url: "https://picsum.photos/720/1080?random=Ergonomic+Chair+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Ergonomic+Chair+2",
+        url: "https://picsum.photos/720/1080?random=Ergonomic+Chair+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Ergonomic+Chair+3",
+        url: "https://picsum.photos/720/1080?random=Ergonomic+Chair+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Ergonomic+Chair+4",
+        url: "https://picsum.photos/720/1080?random=Ergonomic+Chair+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Ergonomic+Chair+5",
+        url: "https://picsum.photos/720/1080?random=Ergonomic+Chair+5.webp",
       },
     ],
   },
@@ -422,19 +422,19 @@ const products = [
     quantity: 40,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Wireless+Charging+Pad+1",
+        url: "https://picsum.photos/720/1080?random=Wireless+Charging+Pad+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Wireless+Charging+Pad+2",
+        url: "https://picsum.photos/720/1080?random=Wireless+Charging+Pad+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Wireless+Charging+Pad+3",
+        url: "https://picsum.photos/720/1080?random=Wireless+Charging+Pad+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Wireless+Charging+Pad+4",
+        url: "https://picsum.photos/720/1080?random=Wireless+Charging+Pad+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Wireless+Charging+Pad+5",
+        url: "https://picsum.photos/720/1080?random=Wireless+Charging+Pad+5.webp",
       },
     ],
   },
@@ -446,19 +446,19 @@ const products = [
     quantity: 15,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Drawing+Tablet+1",
+        url: "https://picsum.photos/720/1080?random=Drawing+Tablet+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Drawing+Tablet+2",
+        url: "https://picsum.photos/720/1080?random=Drawing+Tablet+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Drawing+Tablet+3",
+        url: "https://picsum.photos/720/1080?random=Drawing+Tablet+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Drawing+Tablet+4",
+        url: "https://picsum.photos/720/1080?random=Drawing+Tablet+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Drawing+Tablet+5",
+        url: "https://picsum.photos/720/1080?random=Drawing+Tablet+5.webp",
       },
     ],
   },
@@ -470,19 +470,19 @@ const products = [
     quantity: 25,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Thermostat+1",
+        url: "https://picsum.photos/720/1080?random=Smart+Thermostat+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Thermostat+2",
+        url: "https://picsum.photos/720/1080?random=Smart+Thermostat+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Thermostat+3",
+        url: "https://picsum.photos/720/1080?random=Smart+Thermostat+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Thermostat+4",
+        url: "https://picsum.photos/720/1080?random=Smart+Thermostat+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Smart+Thermostat+5",
+        url: "https://picsum.photos/720/1080?random=Smart+Thermostat+5.webp",
       },
     ],
   },
@@ -494,19 +494,19 @@ const products = [
     quantity: 30,
     images: [
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Air+Purifier+1",
+        url: "https://picsum.photos/720/1080?random=Air+Purifier+1.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Air+Purifier+2",
+        url: "https://picsum.photos/720/1080?random=Air+Purifier+2.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Air+Purifier+3",
+        url: "https://picsum.photos/720/1080?random=Air+Purifier+3.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Air+Purifier+4",
+        url: "https://picsum.photos/720/1080?random=Air+Purifier+4.webp",
       },
       {
-        url: "https://dummyimage.com/720x1080/000/fff.png&text=Air+Purifier+5",
+        url: "https://picsum.photos/720/1080?random=Air+Purifier+5.webp",
       },
     ],
   },
