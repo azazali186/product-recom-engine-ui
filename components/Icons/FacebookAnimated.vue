@@ -8,7 +8,7 @@
     >
       <g
         fill="none"
-        stroke="currentColor"
+        stroke="blue"
         stroke-linecap="round"
         stroke-width="4"
       >

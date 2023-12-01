@@ -39,11 +39,17 @@
 
     <div>
       <b>Seller informations:</b>
-      <div>
+      <div class="flex items-center gap-5">
         Shop Name:
-        <ULink :to="'/' + seller.name" block target="_blank"
+        <ULink :to="'/shop/' + seller.name" block target="_blank"
           ><b>{{ seller.name }}</b></ULink
-        >
+        >  
+        <ULink :to="'/shop/' + seller.name" block target="_blank"
+          ><UAvatar
+          src="https://avatars.githubusercontent.com/u/739984?v=4"
+          :alt="seller.name"
+          class="cursor-pointer"
+        /></ULink>
       </div>
       <div>
         Seller Ratings: <b>{{ seller.ratings }}</b>
@@ -68,10 +74,10 @@
         </span>
       </button>
 
-      <TelegramIcon class="text-[24px]" :mobile="seller.tg" />
-      <WhatsAppIcon class="text-[24px]" :mobile="seller.wa" />
-      <FacebookIcon class="text-[24px]" :link="seller.fb" />
-      <EmailIcon class="text-[24px] cursor-pointer" :email="seller.contact" />
+      <TelegramIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg" :mobile="seller.tg" />
+      <WhatsAppIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-green-400 shadow-lg" :mobile="seller.wa" />
+      <FacebookIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg" :link="seller.fb" />
+      <EmailIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-green-400 shadow-lg cursor-pointer" :email="seller.contact" />
     </div>
   </div>
 </template>
