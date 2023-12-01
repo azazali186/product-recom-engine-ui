@@ -38,6 +38,9 @@ const product = ref({
     { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+5" },
     { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+6" },
     { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+7" },
+    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+8" },
+    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+9" },
+    { url: "https://dummyimage.com/720x1080/000/fff.png&text=Blender+10" },
   ],
   status: "In Stock",
   category: "Electronics",
@@ -53,18 +56,23 @@ const product = ref({
     "Experience unparalleled gaming with our Ultimate Gaming Laptop. Equipped with advanced graphics capabilities, a high-resolution display, and a responsive keyboard, this laptop ensures a smooth and immersive gaming experience. Its sleek and portable design makes it perfect for gaming on the go. Whether you're a professional gamer or a casual enthusiast, this laptop delivers the power you need. Dive into your favorite games with confidence, knowing you have the ultimate gaming companion by your side.",
   variations: [
     {
-      id: "5a",
-      title: "Ultimate Gaming Laptop - 16GB RAM",
-      price: 1200,
-      quantity: 8,
-      currency: "$",
-    },
-    {
-      id: "5b",
-      title: "Ultimate Gaming Laptop - 32GB RAM",
-      price: 1400,
-      quantity: 4,
-      currency: "$",
+      name: "RAM",
+      values: [
+        {
+          id: "16GB",
+          title: "Ultimate Gaming Laptop - 16GB RAM",
+          price: 1200,
+          quantity: 8,
+          currency: "$",
+        },
+        {
+          id: "32GB",
+          title: "Ultimate Gaming Laptop - 32GB RAM",
+          price: 1400,
+          quantity: 4,
+          currency: "$",
+        },
+      ],
     },
   ],
   sellerInfo: {
@@ -72,8 +80,8 @@ const product = ref({
     ratings: 4.8,
     contact: "support@techempire.com",
     fb: "https://fb.com",
-    tg: "0123456789",
-    wa: "0123456789",
+    tg: "0965655136",
+    wa: "0965655136",
   },
   meta: {
     title: "Ultimate Gaming Laptop",
@@ -95,8 +103,7 @@ useHead({
   meta: [
     {
       name: "description",
-      content:
-        `${product.value.meta.description}`,
+      content: `${product.value.meta.description}`,
     },
     { name: "keywords", content: `${product.value.meta.keywords}` },
     { name: "tags", content: `${product.value.meta.tags}` },
