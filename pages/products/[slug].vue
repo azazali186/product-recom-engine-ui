@@ -4,7 +4,6 @@
       <div class="flex gap-5">
         <ImageSlider :data="product.images" :title="product.title" />
         <TopDetails :data="product" />
-      
       </div>
       <!-- Left Image and Right (attributes and Name price and quantity and Buy Now and Contact to Seller Info, through InApp Email, Whats'App, Telegram, and Facebook) -->
       <!-- Product Description  -->
@@ -69,11 +68,15 @@ const product = ref({
     },
   ],
   sellerInfo: {
-    sellerName: "TechEmpire",
-    sellerRating: 4.8,
-    sellerContact: "support@techempire.com",
+    name: "TechEmpire",
+    ratings: 4.8,
+    contact: "support@techempire.com",
+    fb: "https://fb.com",
+    tg: "0123456789",
+    wa: "0123456789",
   },
   meta: {
+    title: "Ultimate Gaming Laptop",
     keywords: [
       "Gaming Laptop",
       "High-Performance Laptop",
@@ -84,5 +87,20 @@ const product = ref({
       "Explore the ultimate gaming experience with our high-performance gaming laptop. Designed for gamers, this laptop features advanced graphics, a responsive keyboard, and a sleek design.",
     tags: ["Gaming", "Laptop", "Electronics", "TechEmpire"],
   },
+});
+
+useHead({
+  title: `${product.value.title}`,
+  description: `${product.value.description}`,
+  meta: [
+    {
+      name: "description",
+      content:
+        `${product.value.meta.description}`,
+    },
+    { name: "keywords", content: `${product.value.meta.keywords}` },
+    { name: "tags", content: `${product.value.meta.tags}` },
+    { name: "title", content: `${product.value.meta.title}` },
+  ],
 });
 </script>

@@ -1,0 +1,10 @@
+
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-dasharray="80" stroke-dashoffset="80" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4H18L21 11V14H14L15 20L12 21L7 13H3V4H7V13"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.8s" values="80;0"></animate></path></svg>
+  </template>
+  
+  <script>
+  export default {
+    name: 'LineMdThumbsDown'
+  }
+  </script>
