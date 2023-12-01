@@ -77,7 +77,7 @@
       <TelegramIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg" :mobile="seller.tg" />
       <WhatsAppIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-green-400 shadow-lg" :mobile="seller.wa" />
       <FacebookIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg" :link="seller.fb" />
-      <EmailIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-green-400 shadow-lg cursor-pointer" :email="seller.contact" />
+      <EmailIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-red-400 shadow-lg cursor-pointer" :email="seller.contact" />
     </div>
   </div>
 </template>
