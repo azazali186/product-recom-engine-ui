@@ -23,13 +23,18 @@
       <ProductDetailsWriteReview />
       <div class="flex flex-col gap-5 pb-10 pt-5">
         <div class="text-center text-2xl font-bold">
-          Customers Feedback:
+          Customers Feedback: From 1 to 10
         </div>
         <div class="py-3" v-for="i in 10">
           <ProductDetailsFeedbacks  />
         </div>
       </div>
-      <!-- relevent product -->
+      <div class="flex flex-col ">
+        <div class="text-2xl font-bold text-center mt-10">Relavent Products:</div>
+        <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
+          <ProductCardVue v-for="product in products" :data="product" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
