@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
     head: {
@@ -6,8 +5,9 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
   },
-  devtools: { enabled: true },
+
   css: ["./assets/css/main.css"],
+
   modules: [
     "@nuxt/ui",
     "nuxt-icon",
@@ -15,4 +15,8 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "nuxt-swiper",
   ],
+
+  devtools: {
+    enabled: true,
+  },
 });
