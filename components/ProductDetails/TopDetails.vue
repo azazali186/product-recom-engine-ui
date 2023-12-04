@@ -44,7 +44,7 @@
         <ULink :to="'/shop/' + seller.name" block target="_blank"
           ><b>{{ seller.name }}</b></ULink
         >  
-        <ULink :to="'/shop/' + seller.name" block target="_blank"
+        <ULink :to="'/shops/' + seller.name" block target="_blank"
           ><UAvatar
           src="https://avatars.githubusercontent.com/u/739984?v=4"
           :alt="seller.name"
@@ -65,12 +65,12 @@
     <br />
     <div class="flex gap-3 items-center">
       <button
-        class="w-[100px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+        class="w-[155px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
       >
         <span
           class="relative px-5 py-2.5 hover:text-white font-bold dark:text-white transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
         >
-          Buy Now
+          Contact To Seller
         </span>
       </button>
 

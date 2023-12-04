@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-5 items-center rounded-lg py-5 border-2 border-green-400 shadow-md shadow-green-400 p-10 hover:shadow-lg hover:shadow-blue-600">
+    <div class="flex flex-col gap-5 items-center rounded-lg py-5 border-1 border-green-400 shadow-sm shadow-green-400 p-10 hover:shadow-md hover:shadow-blue-600">
         <div class="text-2xl flex font-bold">
            Write Review
         </div>

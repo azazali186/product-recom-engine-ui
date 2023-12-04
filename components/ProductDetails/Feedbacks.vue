@@ -1,5 +1,5 @@
 <template>
-    <div class="flex gap-5 flex-col border-2  rounded-lg border-green-400 shadow-md shadow-green-400 p-10 hover:shadow-lg hover:shadow-blue-600">
+    <div class="flex gap-5 flex-col border-1  rounded-lg border-green-400 shadow-sm shadow-green-400 p-10 hover:shadow-md hover:shadow-blue-600">
         <div class="flex gap-5 items-center">
             <span class="text-lg font-bold">Customer Name : </span>
             <span class="text-lg font-bold">Sam Khan </span>
