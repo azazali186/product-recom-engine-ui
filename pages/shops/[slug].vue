@@ -1,17 +1,13 @@
 <template>
     <div :class="classes">
 
-        <div class="w-[8%] h-[100%]" :style="styles">
-            <img :src="leftBannerImages.url" class="h-[100%]" alt="">
-        </div>
-        <div class="w-[84%] h-[100%]  overflow-y-scroll hide-scrollbar" :style="stylesmid">
-            <div>Hello Darling</div>
-        </div>
-        <div class="w-[8%] h-[100%]" :style="styles">
-            <img :src="rightBannerImages.url" class="h-[100%]" alt="">
-        </div>
+        <LeftBanner  :data="leftBannerImages" />
 
-        <!-- long left ad section -->
+        <MiddleContainer :shopInfo="shopInfo" :banner="centerBannerImages" />
+        
+        <RightBanner  :data="rightBannerImages" />
+
+        <!-- long left ad section done -->
         <!-- seller background and text color configuration load -->
         <!-- banner background -->
         <!-- on Banner profile photo and name in big -->
@@ -24,7 +20,7 @@
         <!-- top liked products  -->
         <!-- most visited  -->
         <!-- recommended products from buyer  -->
-        <!-- long right ad section -->
+        <!-- long right ad section done -->
 
         <!-- contact us banner  -->
 
@@ -33,6 +29,10 @@
 </template>
 
 <script setup>
+
+import LeftBanner from '../../components/Shops/LeftBanner'
+import RightBanner from '../../components/Shops/RightBanner'
+import MiddleContainer from '../../components/Shops/MiddleContainer'
 
 const route = useRoute();
 const shopUrl = ref(route.params.slug);
@@ -54,9 +54,8 @@ const shopConfig = ref({
     text: "#7367f5"
 });
 
-const classes = `bg-[${shopConfig.value.background || '#fff'}] text-[${shopConfig.value.background || '#121212'}] flex flex-row justify-between px-10 gap-5 mt-5 w-[100%]`
+const classes = `bg-[${shopConfig.value.background || '#fff'}] text-[${shopConfig.value.background || '#121212'}] flex flex-row justify-between shop-main gap-5 mt-5 w-[100%]`
 
-const styles = 'height: calc(100vh - 220px);'
 const stylesmid = 'height: calc(100vh - 220px); overflow-y:scroll'
 
 const shopInfo = ref({

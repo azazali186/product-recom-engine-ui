@@ -6,7 +6,7 @@
         <span class="footer-content font-bold">About</span>
         <span class="footer-content font-bold">Advertising</span>
         <span class="footer-content font-bold">Business</span>
-        <span class="footer-content font-bold">How Search Works</span>
+        <span class="footer-content c1 font-bold">How Search Works</span>
       </div>
       <div class="footer-right-menu mr-10">
         <span class="footer-content font-bold">Privacy</span>

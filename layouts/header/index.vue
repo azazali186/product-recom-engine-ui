@@ -2,12 +2,12 @@
   <div
     class="header border-b-2 py-1 border-t-grey-400 px-10 space-between items-center"
   >
-    <div v-if="data" :class="data ? 'header-right-menu' : 'hidden'">
+    <div v-if="data" :class="data ? 'header-left-menu' : 'hidden'">
       <div class="flex justify-start">
         <SearchBoxHeaderSearchInputBox />
       </div>
     </div>
-    <h1 class="flex text-2xl font-bold text-gray-400 justify-center">
+    <h1 class="flex text-2xl font-bold text-gray-400 justify-center md:hidden sm:hidden">
       Welcome to Product Search Engine
     </h1>
     <div class="header-right-menu">
