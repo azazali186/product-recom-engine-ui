@@ -32,7 +32,7 @@
         :search-attributes="['label']"
       >
         <UButton color="gray" class="flex-1 justify-between search-engine-select-box-button">
-          {{ current.label }}
+          {{ current?.label || 'All Categories' }}
           <UIcon
             name="i-heroicons-chevron-right-20-solid"
             class="w-5 h-5 transition-transform text-gray-400 dark:text-gray-500"
@@ -40,7 +40,7 @@
           />
         </UButton>
         <template #label>
-          {{ current.label }}
+          {{ current?.label || 'All Categories' }}
         </template>
       </USelectMenu>
 
@@ -143,7 +143,7 @@ const cat = [
   },
 ];
 
-const selected = ref(cat[0].id);
+const selected = ref();
 
 const current = computed(() =>
   cat.find((ct) => ct.id === selected.value)

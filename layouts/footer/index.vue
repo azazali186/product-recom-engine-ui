@@ -10,8 +10,8 @@
       </div>
       <div class="footer-right-menu mr-10">
         <span class="footer-content font-bold">Privacy</span>
+        <span class="footer-content font-bold">Policy</span>
         <span class="footer-content font-bold">Terms</span>
-        <span class="footer-content font-bold">Settings</span>
       </div>
     </div>
   </div>
