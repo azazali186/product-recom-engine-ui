@@ -64,7 +64,7 @@
           <p class="text-2xl">{{ product.title }}</p>
         </div>
         <div class="flex flex-col justify-between items-center">
-          <UButton :to="url" block target="_blank">View More</UButton>
+          <UButton :to="url" block >View More</UButton>
         </div>
       </div>
     </div>

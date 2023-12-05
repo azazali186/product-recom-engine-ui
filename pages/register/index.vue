@@ -1,5 +1,5 @@
 ﻿<template>
-  <div class="flex justify-center items-center h-container">
+  <div class="flex justify-center items-center h-screen">
     <div
       class="register-card border-1 rounded-lg border-green-400 shadow-lg shadow-gray-400 flex flex-col gap-10 p-10 hover:shadow-md hover:shadow-blue-600"
     >

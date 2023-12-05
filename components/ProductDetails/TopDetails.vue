@@ -41,10 +41,10 @@
       <b>Seller informations:</b>
       <div class="flex items-center gap-5">
         Shop Name:
-        <ULink :to="'/shop/' + seller.name" block target="_blank"
+        <ULink :to="'/shops/' + seller.name" block
           ><b>{{ seller.name }}</b></ULink
         >  
-        <ULink :to="'/shops/' + seller.name" block target="_blank"
+        <ULink :to="'/shops/' + seller.name" block
           ><UAvatar
           src="https://avatars.githubusercontent.com/u/739984?v=4"
           :alt="seller.name"
@@ -64,7 +64,8 @@
     </ul>
     <br />
     <div class="flex gap-3 items-center">
-      <button
+      <ULink :to="'/shops/' + seller.name" block
+          ><button
         class="w-[155px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
       >
         <span
@@ -72,7 +73,7 @@
         >
           Contact To Seller
         </span>
-      </button>
+      </button></ULink>
 
       <TelegramIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg" :mobile="seller.tg" />
       <WhatsAppIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-green-400 shadow-lg" :mobile="seller.wa" />

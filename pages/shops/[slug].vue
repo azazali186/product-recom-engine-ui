@@ -8,18 +8,7 @@
         <RightBanner  :data="rightBannerImages" />
 
         <!-- long left ad section done -->
-        <!-- seller background and text color configuration load -->
-        <!-- banner background -->
-        <!-- on Banner profile photo and name in big -->
-        <!-- shop description behind the profile photo but not hide full visible and distributed around profile photo -->
-        <!-- colabrative companies icons or brand icons of products -->
-        <!-- ad section -->
-        <!-- top selling products  -->
-        <!-- top newest products  -->
-        <!-- top categories  -->
-        <!-- top liked products  -->
-        <!-- most visited  -->
-        <!-- recommended products from buyer  -->
+        
         <!-- long right ad section done -->
 
         <!-- contact us banner  -->
