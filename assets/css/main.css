@@ -340,7 +340,7 @@
 
 .login-card{
   width: 400px;
-  height: 50%;
+  height: auto;
 }
 
 .login-input-box{
@@ -353,7 +353,12 @@
 
 .register-card{
   width: 400px;
-  height: 60%;
+  height: auto;
+}
+
+.seller-register-card{
+  width: 400px;
+  height: auto;
 }
 
 @media (max-width: 767px) {
@@ -385,10 +390,12 @@
   }
   .login-card{
     width: 80%;
-    height: 55%;
   }
   .register-card{
     width: 80%;
-    height: 65%;
+  }
+
+  .seller-register-card{
+    width: 80%;
   }
 }
