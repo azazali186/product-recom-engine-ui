@@ -20,4 +20,9 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+  runtimeConfig: {
+    public: {
+      baseURL: process.env.NUXT_PUBLIC_BASE_URL || 'http://127.0.0.1:4500',
+    },
+  },
 });

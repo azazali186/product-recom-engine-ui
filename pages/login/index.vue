@@ -43,6 +43,7 @@
       </div>
       <div class="flex justify-center items-center">
         <button
+          @click="submitLogin"
           class="w-[80px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
         >
           <span
@@ -53,7 +54,10 @@
         </button>
       </div>
       <div class="flex justify-center gap-2 items-center">
-        Don't have account <ULink to="/register" class="hover:text-green-400 font-bold"> Register Here </ULink>
+        Don't have account
+        <ULink to="/register" class="hover:text-green-400 font-bold">
+          Register Here
+        </ULink>
       </div>
     </div>
   </div>
@@ -66,4 +70,16 @@ definePageMeta({
 const username = ref();
 const password = ref();
 const show = ref(true);
+
+const submitLogin = async () => {
+  const res = await useCustomFetch("/api/v1/auth/login", {
+    method: "POST",
+    body: {
+      username: username.value,
+      password: password.value,
+    },
+  })
+  console.log('res',res)
+  
+};
 </script>
