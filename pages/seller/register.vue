@@ -1,7 +1,7 @@
 ﻿<template>
   <div class="flex justify-center items-center h-container">
     <div
-      class="seller-register-card border-1 rounded-lg border-green-400 shadow-sm shadow-green-400 flex flex-col gap-10 p-10 hover:shadow-md hover:shadow-blue-600"
+      class="seller-register-card border-1 rounded-lg border-green-400 shadow-lg shadow-gray-400 flex flex-col gap-10 p-10 hover:shadow-md hover:shadow-blue-600"
     >
       <div class="text-2xl font-bold flex justify-center items-center">
         Register As Merchant
