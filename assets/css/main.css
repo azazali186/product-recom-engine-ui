@@ -334,6 +334,27 @@
   height: calc(100vh - 220px);
 }
 
+.h-container{
+  height: calc(100vh - 220px);
+}
+
+.login-card{
+  width: 400px;
+  height: 50%;
+}
+
+.login-input-box{
+  width: 70%;
+}
+
+.login-input-lable{
+  width: 30%;
+}
+
+.register-card{
+  width: 400px;
+  height: 60%;
+}
 
 @media (max-width: 767px) {
   .search-engine-select-box {
@@ -361,5 +382,13 @@
   .shop-mid-centainer{
     width: 70%;
     height: calc(100vh - 160px);
+  }
+  .login-card{
+    width: 80%;
+    height: 55%;
+  }
+  .register-card{
+    width: 80%;
+    height: 65%;
   }
 }
