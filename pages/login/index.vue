@@ -64,22 +64,33 @@
 </template>
 
 <script setup>
+
 definePageMeta({
   layout: false,
 });
+const router = useRouter();
 const username = ref();
 const password = ref();
 const show = ref(true);
 
+
 const submitLogin = async () => {
-  const res = await useCustomFetch("/api/v1/auth/login", {
-    method: "POST",
-    body: {
-      username: username.value,
-      password: password.value,
-    },
-  })
-  console.log('res',res)
-  
+  try {
+    const res = await useCustomFetch("/api/v1/auth/login", {
+      method: "POST",
+      body: {
+        username: username.value,
+        password: password.value,
+      },
+    });
+    const result = res.data;
+    if (result?.token) {
+      localStorage.setItem("search-engin-login-token", result.token);
+    }
+    if (result?.user) {
+      localStorage.setItem("search-engin-login-user", result.user);
+    }
+    router.push("/dashboard");
+  } catch (error) {}
 };
 </script>

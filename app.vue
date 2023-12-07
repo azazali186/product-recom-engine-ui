@@ -7,6 +7,7 @@
 </template>
 
 <script setup>
+
 useSeoMeta({
   title: "Product Search Engine",
   description:

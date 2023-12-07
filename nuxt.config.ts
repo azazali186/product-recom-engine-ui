@@ -17,8 +17,8 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     "nuxt-swiper",
+    '@pinia/nuxt'
   ],
-
   devtools: {
     enabled: true,
   },
