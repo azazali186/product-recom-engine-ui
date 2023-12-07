@@ -2,7 +2,7 @@
   <div class="flex justify-center">
     <div class="container flex flex-col mt-10">
       <div class="flex gap-5">
-        <ImageSlider :data="product.images" :title="product.title" />
+        <Slider :data="product.images" :title="product.title" />
         <TopDetails :data="product" />
       </div>
       <div>

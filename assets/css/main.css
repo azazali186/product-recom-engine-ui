@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;900&display=swap");
+@import "@egjs/vue3-flicking/dist/flicking.css";
+@import "@egjs/vue3-flicking/dist/flicking-inline.css";
+@import "@egjs/flicking-plugins/dist/arrow.css";
+@import "@egjs/flicking-plugins/dist/pagination.css";
 
 * {
   font-family: "Roboto", sans-serif;

@@ -4,10 +4,12 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
     },
-    pageTransition: { name: 'page', mode: 'out-in' },
+    pageTransition: { name: "page", mode: "out-in" },
   },
 
-  css: ["./assets/css/main.css"],
+  css: [
+    "./assets/css/main.css",
+  ],
 
   modules: [
     "@nuxt/ui",
@@ -22,7 +24,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseURL: process.env.NUXT_PUBLIC_BASE_URL || 'http://127.0.0.1:4500',
+      baseURL: process.env.NUXT_PUBLIC_BASE_URL || "http://127.0.0.1:4500",
     },
   },
 });
