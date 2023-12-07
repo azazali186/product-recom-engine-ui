@@ -4,7 +4,7 @@
       <img :src="logo" />
     </div>
     <div class="w-full flex justify-center">
-      <SearchInputBox />
+      <SearchInputBox  />
     </div>
     <div class="flex gap-2 mt-5 p-3">
       <button
@@ -32,11 +32,15 @@
 </template>
 
 <script setup>
-
 import SearchInputBox from "./SearchInputBox";
-import ProductsListVue from "../ProductList"
-import logo from '../../assets/images/logo.png'
+import ProductsListVue from "../ProductList";
+import logo from "../../assets/images/logo.png";
 const data = inject("data");
 
 const clas = " rounded-[50px] w-[40%] p-0.5 sp ";
+
+const cat2 = ref([]);
+const cat = ref([]);
+
+
 </script>

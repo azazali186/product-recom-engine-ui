@@ -24,15 +24,18 @@
         :options="cat"
         placeholder="Select Category"
         value-attribute="id"
-        option-attribute="label"
+        option-attribute="name"
         class="search-engine-select-box"
         selected-icon="i-heroicons-hand-thumb-up-solid"
         searchable
         searchable-placeholder="Search by name or favorite colors"
-        :search-attributes="['label']"
+        :search-attributes="['name']"
       >
-        <UButton color="gray" class="flex-1 justify-between search-engine-select-box-button">
-          {{ current?.label || 'All Categories' }}
+        <UButton
+          color="gray"
+          class="flex-1 justify-between search-engine-select-box-button"
+        >
+          {{ current?.name || "All Categories" }}
           <UIcon
             name="i-heroicons-chevron-right-20-solid"
             class="w-5 h-5 transition-transform text-gray-400 dark:text-gray-500"
@@ -40,7 +43,7 @@
           />
         </UButton>
         <template #label>
-          {{ current?.label || 'All Categories' }}
+          {{ current?.name || "All Categories" }}
         </template>
       </USelectMenu>
 
@@ -58,96 +61,21 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import { getQueryData } from "~/composables/helper";
+const cat = ref([]);
 const input = ref(false);
 const open = ref(false);
 const searchInput = ref(null);
 
 const search = ref("");
 
-const cat = [
-  {
-    id: 1,
-    label: "Cat 1894",
-  },
-  {
-    id: 2,
-    label: "Cat 16541",
-  },
-  {
-    id: 3,
-    label: "Cat 169874",
-  },
-  {
-    id: 4,
-    label: "Cat 1125",
-  },
-  {
-    id: 5,
-    label: "Cat 1365",
-  },
-  {
-    id: 6,
-    label: "Cat 1956",
-  },
-  {
-    id: 7,
-    label: "Cat 1365",
-  },
-  {
-    id: 7,
-    label: "Cat 1651",
-  },
-  {
-    id: 8,
-    label: "Cat 1",
-  },
-  {
-    id: 9,
-    label: "Cat 1",
-  },
-  {
-    id: 10,
-    label: "Cat 1",
-  },
-  {
-    id: 11,
-    label: "Cat 1",
-  },
-  {
-    id: 12,
-    label: "Cat 1",
-  },
-  {
-    id: 13,
-    label: "Cat 1",
-  },
-  {
-    id: 14,
-    label: "Cat 1",
-  },
-  {
-    id: 15,
-    label: "Cat 1",
-  },
-  {
-    id: 16,
-    label: "Cat 1",
-  },
-  {
-    id: 17,
-    label: "Cat 1",
-  },
-  {
-    id: 18,
-    label: "Cat 1",
-  },
-];
-
 const selected = ref();
 
 const current = computed(() =>
-  cat.find((ct) => ct.id === selected.value)
+  cat.value.find((ct) => ct.id === selected.value)
 );
+
+console.log("cat is ", cat.value);
 
 const clas = " rounded-[50px] w-[40%] p-0.5 sp ";
 
@@ -165,9 +93,48 @@ watch(search, () => {
   }
 });
 
-onMounted(() => {
+watch(selected, () => {
+  searchFunction();
+});
+
+const searchFunction = async () => {
+  console.log("Search is ", search.value);
+  console.log("selected is ", selected.value);
+  console.log("Search is called");
+  await productSearch();
+  await getCatData()
+};
+
+const productSearch = async () => {
+  try {
+    const queryData = {};
+    if (selected.value > 0) queryData.category_ids = selected.value;
+    if (search.value.length > 2) queryData.search = search.value;
+
+    const params = getQueryData(queryData);
+
+    const url = "/api/v1/products/public?" + params;
+    const res = await useCustomFetch(url);
+    cat.value = res.data.list;
+  } catch (error) {
+    console.log("err");
+  }
+};
+
+onMounted(async () => {
+  await getCatData()
   document.addEventListener("click", handleClickOutside);
 });
+
+const getCatData = async () =>{
+  try {
+    const res = await useCustomFetch("/api/v1/category/public");
+    cat.value = res.data.list;
+    console.log(cat.value);
+  } catch (error) {
+    console.log("err");
+  }
+}
 
 onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
