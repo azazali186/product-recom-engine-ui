@@ -88,7 +88,7 @@ const submitLogin = async () => {
       localStorage.setItem("search-engin-login-token", result.token);
     }
     if (result?.user) {
-      localStorage.setItem("search-engin-login-user", result.user);
+      localStorage.setItem("search-engin-login-user", JSON.stringify(result.user));
     }
     router.push("/dashboard");
   } catch (error) {}

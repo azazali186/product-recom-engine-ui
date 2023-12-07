@@ -4,7 +4,7 @@
       class="flex w-full h-screen justify-center items-center"
       v-if="loading"
     >
-      <IconsLoadingCube class="text-[72px]" />
+      <IconsLoadingCube class="text-[108px]" />
     </div>
     <div v-else>
       <HeaderVue />

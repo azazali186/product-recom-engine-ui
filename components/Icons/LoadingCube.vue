@@ -39,7 +39,7 @@
         values="13;1"
       ></animate>
     </rect>
-    <rect width="10" height="10" x="1" y="13" fill="#002de0" rx="1">
+    <rect width="10" height="10" x="1" y="13" fill="red" rx="1">
       <animate
         id="svgSpinnersBlocksShuffle34"
         fill="freeze"
