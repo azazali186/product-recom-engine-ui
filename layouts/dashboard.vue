@@ -25,7 +25,6 @@ onMounted(() => {
   if (typeof window !== "undefined") {
     console.log(localStorage.getItem("search-engin-login-token"));
     if (!localStorage.getItem("search-engin-login-token")) {
-      loading.value = false;
       router.push("/login");
     } else {
       loading.value = false;
