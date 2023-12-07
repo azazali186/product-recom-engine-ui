@@ -21,12 +21,15 @@ import HeaderVue from "./header";
 import FooterVue from "./footer";
 const loading = ref(true);
 const router = useRouter();
-if (typeof window !== "undefined") {
-  console.log(localStorage.getItem("search-engin-login-token"));
-  if (!localStorage.getItem("search-engin-login-token")) {
-    router.push("/login");
-  } else {
-    loading.value = false;
+onMounted(() => {
+  if (typeof window !== "undefined") {
+    console.log(localStorage.getItem("search-engin-login-token"));
+    if (!localStorage.getItem("search-engin-login-token")) {
+      loading.value = false;
+      router.push("/login");
+    } else {
+      loading.value = false;
+    }
   }
-}
+});
 </script>
