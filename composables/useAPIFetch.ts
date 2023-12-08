@@ -1,31 +1,29 @@
-﻿import auth from "../store/auth";
+﻿import axios from 'axios';
+import auth from '../store/auth';
 
-export const useCustomFetch = async (request: any, opts: any) => {
+export const useCustomFetch = async (request: any) => {
   const config = useRuntimeConfig();
   let res: any = null;
   let er: any = null;
-  await useFetch(request, {
-    baseURL: config.public.baseURL,
-    onRequest({ request, options }) {
-      const token = localStorage.getItem("search-engin-login-token")
-        ? localStorage.getItem("search-engin-login-token")
-        : auth.state.token;
-      const headers = {};
-      if (token) {
-        headers.authorization = "Bearer " + token;
-      }
-    },
-    onRequestError({ request, options, error }) {
-      er = error;
-    },
-    onResponse({ request, response, options }) {
-      res = response._data;
-      return response._data;
-    },
-    onResponseError({ request, response, options }) {
-      er = response._data;
-    },
-    ...opts,
-  });
+
+  try {
+    const token = localStorage.getItem('search-engin-login-token') || auth.state.token;
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+    const response = await axios({
+      method: request.method || 'get',
+      url: request.url,
+      baseURL: config.public.baseURL,
+      headers,
+      data: request?.body || {},
+      ...request, // Additional request configuration
+    });
+
+    // Assuming the structure of your response object
+    res = response.data;
+  } catch (error) {
+    er = error;
+  }
+
   return { ...res, error: er };
 };

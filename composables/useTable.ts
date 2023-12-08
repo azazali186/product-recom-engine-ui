@@ -35,11 +35,11 @@ export default function useTable(paginate: any, trash: any, bulkTrash: any) {
       pagination.value.sortBy = sortBy;
       pagination.value.descending = descending;
     } catch (err: any) {
-      $q.notify({
+      /* $q.notify({
         type: "negative",
         icon: "fas fa-exclamation-triangle",
         message: err.toString(),
-      });
+      }); */
     }
   }
 
@@ -79,17 +79,17 @@ export default function useTable(paginate: any, trash: any, bulkTrash: any) {
         }
       }
 
-      $q.notify({
+      /* $q.notify({
         type: "positive",
         icon: "fas fa-check",
         message: t(Utils.getKey(`${type}(s) deleted successfully`)),
-      });
+      }); */
     } catch (err: any) {
-      $q.notify({
+      /* $q.notify({
         type: "negative",
         icon: "fas fa-exclamation-triangle",
         message: err.toString(),
-      });
+      }); */
     }
 
     state.showConfirm = false;

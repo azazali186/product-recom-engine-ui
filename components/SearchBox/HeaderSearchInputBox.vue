@@ -119,7 +119,7 @@ const productSearch = async () => {
     console.log("queryData ", queryData);
     const params = getQueryData(queryData);
     const url = "/products/public?" + params;
-    const res = await useCustomFetch(url);
+    const res = await useCustomFetch({url});
     prod.value = res?.data?.list;
     prodState.setProductData(prod.value);
     console.log(prod.value);
@@ -139,7 +139,7 @@ const getCatData = async () => {
     if (catState.getCatData().length > 0) {
       cat.value = catState.getCatData();
     } else {
-      const res = await useCustomFetch("/category/public");
+      const res = await useCustomFetch({url:"/category/public"});
       cat.value = res?.data?.list;
       catState.setCatData(cat.value);
     }

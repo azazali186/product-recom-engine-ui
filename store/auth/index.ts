@@ -18,25 +18,30 @@ function setAuth(data) {
   state.user.permissions = data.permissions?.map((p) => p.name) || [];
   localStorage.setItem("search-engin-login-token", data.token);
 }
-let token = ""
-if (typeof window !== 'undefined') {
-token = localStorage.getItem("search-engin-login-token")
-  ? localStorage.getItem("search-engin-login-token")
-  : state.token;
+let token = "";
+if (typeof window !== "undefined") {
+  token = localStorage.getItem("search-engin-login-token")
+    ? localStorage.getItem("search-engin-login-token")
+    : state.token;
 }
-const headers = {};
+let headers = {};
 if (token) {
   headers.authorization = "Bearer " + token;
 }
 
 async function checkAuth() {
   try {
-    const response = await api.get("/auth/user", {
-      headers: headers,
+    console.log(token);
+    headers = {
+      authorization: "Bearer " + token,
+    };
+    const response = await useCustomFetch({
+      url: "/auth/user",
+      method: "GET",
     });
+    console.log("res", response);
     setAuth(response.data);
-    navigateTo("/");
-    // loading.value = false;
+    // navigateTo("/");
   } catch (err) {
     await logout();
     console.log(err);
@@ -49,10 +54,14 @@ async function logout() {
     state.user = null;
     state.token = null;
     localStorage.removeItem("search-engin-login-token");
-    await api.post("/user/logout");
+    localStorage.removeItem("search-engin-login-user");
+    await await useCustomFetch({
+      url: "/user/logout",
+      method: "POST",
+    });
   } catch (err) {
     // Force redirect
-    window.location = "/#/login";
+    navigateTo("/login");
   }
 }
 

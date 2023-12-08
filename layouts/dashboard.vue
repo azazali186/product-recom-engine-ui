@@ -19,8 +19,10 @@
 <script setup>
 import HeaderVue from "./header";
 import FooterVue from "./footer";
+import auth from "~/store/auth";
 const loading = ref(true);
 onMounted(() => {
+  auth.checkAuth()
   if (typeof window !== "undefined") {
     console.log(localStorage.getItem("search-engin-login-token"));
     if (!localStorage.getItem("search-engin-login-token")) {

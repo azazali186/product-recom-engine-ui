@@ -76,7 +76,8 @@ const show = ref(true);
 
 const submitLogin = async () => {
   try {
-    const res = await useCustomFetch("/auth/login", {
+    const res = await useCustomFetch({
+      url: "/auth/login",
       method: "POST",
       body: {
         username: username.value,
