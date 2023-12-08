@@ -105,7 +105,7 @@ watch(selected, () => {
 const searchFunction = async () => {
   await productSearch();
   await getCatData();
-  emit("update");
+  emit("update", search.value);
 };
 
 const productSearch = async () => {
@@ -113,7 +113,6 @@ const productSearch = async () => {
     const queryData = {};
     if (selected.value > 0) queryData.category_ids = selected.value;
     if (search.value.length > 2) queryData.search = search.value;
-    console.log("queryData ", queryData);
     const params = getQueryData(queryData);
     const url = "/api/v1/products/public?" + params;
     const res = await useCustomFetch(url);
@@ -132,7 +131,7 @@ onMounted(async () => {
 
 const getCatData = async () => {
   try {
-    if (catState.getCatData().length > 0) {
+    if (catState.getCatData()?.length > 0) {
       cat.value = catState.getCatData();
     } else {
       const res = await useCustomFetch("/api/v1/category/public");

@@ -44,7 +44,7 @@
           color="gray"
           class="flex-1 justify-between search-engine-select-box-button"
         >
-           {{ current?.name || "All Categories" }}
+          {{ current?.name || "All Categories" }}
           <UIcon
             name="i-heroicons-chevron-right-20-solid"
             class="w-5 h-5 transition-transform text-gray-400 dark:text-gray-500"
@@ -52,18 +52,9 @@
           />
         </UButton>
         <template #label>
-           {{ current?.name || "All Categories" }}
+          {{ current?.name || "All Categories" }}
         </template>
       </USelectMenu>
-
-      <!-- <Icon
-          class="search-engine-search-box-icon mh-30 color-mic"
-          name="heroicons-solid:microphone"
-        />
-        <Icon
-          class="search-engine-search-box-icon mh-30 color-camera"
-          name="heroicons-solid:camera"
-        /> -->
     </div>
   </div>
 </template>
@@ -78,12 +69,18 @@ const searchInput = ref(null);
 const search = ref("");
 
 const cat = ref([]);
+const prod = ref([]);
 
 const selected = ref([]);
 
-const current = computed(() => cat.value?.find((ct) => ct.id === selected.value));
+const current = computed(() =>
+  cat.value?.find((ct) => ct.id === selected.value)
+);
 
 const clas = " rounded-[50px] p-0.5 sp relative ";
+
+const prodState = useProductData();
+const catState = useCatData();
 
 const handleClickOutside = (event) => {
   if (searchInput.value && !searchInput.value.contains(event.target)) {
@@ -117,21 +114,15 @@ const productSearch = async () => {
     const queryData = {};
     if (selected.value > 0) queryData.category_ids = selected.value;
     if (search.value.length > 2) queryData.search = search.value;
-
+    console.log("queryData ", queryData);
     const params = getQueryData(queryData);
-
     const url = "/api/v1/products/public?" + params;
     const res = await useCustomFetch(url);
-    prod.value = res.data.list;
+    prod.value = res?.data?.list;
+    prodState.setProductData(prod.value);
     console.log(prod.value);
-    if (prod.value?.length > 0) {
-      localStorage.setItem("product-search-result-data", prod.value);
-    } else {
-      localStorage.removeItem("product-search-result-data");
-    }
   } catch (error) {
     console.log("err", error);
-    localStorage.removeItem("product-search-result-data");
   }
 };
 
@@ -142,23 +133,20 @@ onMounted(async () => {
 
 const getCatData = async () => {
   try {
-    const res = await useCustomFetch("/api/v1/category/public");
-    cat.value = res.data.list;
-    if (cat.value?.length > 0) {
-      localStorage.setItem("search-engin-cat-data", JSON.stringify(cat.value));
+    if (catState.getCatData().length > 0) {
+      cat.value = catState.getCatData();
     } else {
-      localStorage.removeItem("search-engin-cat-data");
+      const res = await useCustomFetch("/api/v1/category/public");
+      cat.value = res?.data?.list;
+      catState.setCatData(cat.value);
     }
   } catch (error) {
-    console.log("err");
+    console.log("err", error);
   }
 };
 
 onMounted(() => {
-  const catData = localStorage.getItem("search-engin-cat-data");
-  if (catData?.length > 0) {
-    cat.value = catData;
-  }
+  getCatData();
   document.addEventListener("click", handleClickOutside);
 });
 
@@ -168,7 +156,8 @@ onUnmounted(() => {
 
 const resetFunction = () => {
   console.log("Reset is called");
-  localStorage.removeItem("product-search-result-data");
+  prodState.setProductData(null);
+  selected.value = []
   emit("update");
 };
 </script>

@@ -28,7 +28,7 @@
       </button>
     </div>
   </div>
-  <div v-else class="px-10 py-2 flex justify-center"><ProductsListVue /></div>
+  <div v-else class="px-10 py-2 flex justify-center"><ProductsListVue :data="data" :query="query" /></div>
 </template>
 
 <script setup>
@@ -37,10 +37,12 @@ import ProductsListVue from "../ProductList";
 import logo from "../../assets/images/logo.png";
 const show = ref(false);
 const data = ref([]);
+const query = ref("")
+
+const prodState = useProductData();
 
 onMounted(() => {
-  console.log("input called after change");
-  data.value = localStorage.getItem("product-search-result-data");
+  data.value = prodState.getProductData();
   if (data.value?.length > 0) {
     show.value = true;
   } else {
@@ -49,16 +51,12 @@ onMounted(() => {
 });
 
 const changeValue = (val) => {
-  data.value = localStorage.getItem("product-search-result-data");
+  query.value = val;
+  data.value = prodState?.getProductData();
   if (data.value?.length > 0) {
     show.value = true;
   } else {
     show.value = false;
   }
 };
-
-const clas = " rounded-[50px] w-[40%] p-0.5 sp ";
-
-const cat2 = ref([]);
-const cat = ref([]);
 </script>

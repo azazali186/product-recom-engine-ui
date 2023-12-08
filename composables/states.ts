@@ -5,12 +5,25 @@ export const useProductData = () => {
   const productData = ref([]); // Initialize with an empty array
 
   // Getter function
-  const getProductData = () => productData.value;
+  const getProductData = () => {
+    if (
+      localStorage.getItem("product-search-result-data") &&
+      localStorage.getItem("product-search-result-data") != null
+    ) {
+      return JSON.parse(localStorage.getItem("product-search-result-data"));
+    }
+    return null;
+  };
 
   // Setter function
   const setProductData = (data) => {
-    localStorage.setItem("product-search-result-data", JSON.stringify(data));
-    productData.value = data;
+    if (data == null) {
+      localStorage.removeItem("product-search-result-data");
+    } else {
+      localStorage.setItem("product-search-result-data", JSON.stringify(data));
+      productData.value = data;
+    }
+
     if (productData.value?.length === 0) {
       localStorage.removeItem("product-search-result-data");
     }
@@ -67,6 +80,39 @@ export const useCatData = () => {
   });
 
   return { getCatData, setCatData };
+};
+
+// useQueryData
+export const useQueryData = () => {
+  const queryData = ref("");
+
+  const getQueryData = () => queryData.value;
+
+  const setQueryData = (data) => {
+    localStorage.setItem("search-engin-query-data", data);
+    queryData.value = data;
+    if (queryData.value?.length == 0) {
+      localStorage.removeItem("search-engin-query-data");
+    }
+  };
+
+  onMounted(async () => {
+    try {
+      if (
+        localStorage.getItem("search-engin-query-data") &&
+        localStorage.getItem("search-engin-query-data") != null
+      ) {
+        setQueryData(localStorage.getItem("search-engin-query-data"));
+      } 
+      if (queryData.value == "") {
+        localStorage.removeItem("search-engin-query-data");
+      }
+    } catch (error) {
+      console.log("err", error);
+    }
+  });
+
+  return { getQueryData, setQueryData };
 };
 
 // useShowSearch

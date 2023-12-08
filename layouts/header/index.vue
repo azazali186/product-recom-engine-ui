@@ -7,10 +7,7 @@
         <img :src="logo" class="h-[50px]" />
       </ULink>
     </div>
-    <div
-      v-if="display"
-      :class="display ? 'header-left-menu' : 'hidden'"
-    >
+    <div v-if="display" :class="display ? 'header-left-menu' : 'hidden'">
       <div class="flex justify-start">
         <SearchBoxHeaderSearchInputBox @update="changeValue" />
       </div>
@@ -47,11 +44,14 @@ const show = currentRoute === "/" ? false : true;
 const display = ref(false);
 const data = ref([]);
 
+const query = ref("");
+
+const prodState = useProductData();
+
 import logo from "../../assets/images/logo.png";
 
 onMounted(() => {
-  console.log("input called after change");
-  data.value = localStorage.getItem("product-search-result-data");
+  data.value = prodState.getProductData();
   if (data.value?.length > 0) {
     display.value = true;
   } else {
@@ -64,7 +64,10 @@ watch(display, () => {
 });
 
 const changeValue = (val) => {
-  data.value = localStorage.getItem("product-search-result-data");
+  console.log("header emit called");
+  query.value = val
+  data.value = prodState.getProductData();
+  console.log("data. value", data.value);
   if (data.value?.length > 0) {
     display.value = true;
   } else {
