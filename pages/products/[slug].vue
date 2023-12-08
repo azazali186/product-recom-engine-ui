@@ -2,13 +2,13 @@
   <div class="flex justify-center">
     <div class="container flex flex-col mt-10">
       <div class="flex gap-5">
-        <Slider :data="product.images" :title="product.title" />
-        <TopDetails :data="product" />
+        <Slider :data="product.images" :title="productTitle" />
+        <TopDetails :data="productData" />
       </div>
       <div>
-        <ProductDetailsProductDesc :data="product.description" />
+        <ProductDetailsProductDesc :data="productDescription" />
       </div>
-      <div class="flex flex-col">
+      <!-- <div class="flex flex-col">
         <div class="text-2xl font-bold text-center mt-10">
           Recommended Products:
         </div>
@@ -23,7 +23,7 @@
         <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
           <ProductCardVue v-for="product in products" :data="product" />
         </div>
-      </div>
+      </div> -->
       <ProductDetailsWriteReview />
       <div class="flex flex-col gap-5 pb-10 pt-5">
         <div class="text-center text-2xl font-bold">
@@ -33,14 +33,14 @@
           <ProductDetailsFeedbacks />
         </div>
       </div>
-      <div class="flex flex-col">
+      <!-- <div class="flex flex-col">
         <div class="text-2xl font-bold text-center mt-10">
           Relavent Products:
         </div>
         <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
           <ProductCardVue v-for="product in products" :data="product" />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -52,11 +52,14 @@ import ImageSlider from "../../components/ProductDetails/imageSlider";
 import TopDetails from "../../components/ProductDetails/TopDetails";
 import ProductCardVue from "../../components/ProductList/ProductCard";
 import store from "~/store";
+import productStore from "~/store/product";
 // https://picsum.photos/720/1080?random=100.webp
 const route = useRoute();
 const productId = ref(route.params.slug);
 
 const productData = ref({});
+const productTitle = ref("");
+const productDescription = ref("");
 
 const product = ref({
   id: 5,
@@ -138,6 +141,8 @@ onMounted(async () => {
       url: `/products/public/${productId.value}`,
     });
     console.log("product details is ", res);
+    productData.value = res.data;
+    productStore.data = productData.value;
     store.isLoading = false;
   } catch (error) {
     console.log("err", error);

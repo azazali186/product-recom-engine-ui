@@ -1,7 +1,7 @@
 <template>
   <div class="mt-10 flex flex-col flex-wrap">
     <h1 class="text-4xl font-bold">
-      {{ selectedVariation?.title || product.title }}
+      {{ name }}
     </h1>
     <br />
     <h1>
@@ -92,4 +92,11 @@ const props = defineProps(["data"]);
 const product = ref(props.data);
 const seller = ref(props.data?.sellerInfo);
 const selectedVariation = ref();
+const name = ref("")
+
+
+onMounted(()=>{
+
+})
+
 </script>
