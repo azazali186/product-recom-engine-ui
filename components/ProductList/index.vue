@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center text-2xl">
       <div>
         Search result for <b class="capitalize">{{ query }}</b> is
-        <b>{{ products?.length }}</b> Products
+        <b>{{ count }}</b> Products
       </div>
       <div>
         <USelectMenu
@@ -33,7 +33,11 @@
       </div>
     </div>
     <div class="flex justify-center my-2 gap-10 relative flex-wrap">
-      <ProductCardVue v-if="products?.length > 0" v-for="product in products" :data="product" />
+      <ProductCardVue
+        v-if="products?.length > 0"
+        v-for="product in products"
+        :data="product"
+      />
     </div>
   </div>
 </template>
@@ -42,8 +46,12 @@
 const props = defineProps(["data"]);
 const products = ref(props.data);
 const query = ref("");
+const count = ref(0);
 import store from "~/store";
 import ProductCardVue from "./ProductCard.vue";
+import product from "~/store/product";
+const prodState = useProductData();
+
 const filters = [
   {
     id: "Most relavent",
@@ -72,16 +80,20 @@ const filters = [
 ];
 const selected = ref(filters[0].id);
 
-watch(query,()=>{
+watch(query, () => {
   query.value = store.queryData;
-})
+});
 
-onMounted(()=>{
+onMounted(() => {
   query.value = store.queryData;
-})
+  count.value = product.count || 0;
+  console.log("products ",products.value)
+  if(products?.value?.length <=0){
+    products.value = prodState?.getProductData();
+  }
+});
 
 const current = computed(() => filters.find((ct) => ct.id === selected.value));
-
 
 useHead({
   title: `Mobile search Result`,

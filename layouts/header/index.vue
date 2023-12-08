@@ -7,14 +7,14 @@
         <img :src="logo" class="h-[50px]" />
       </ULink>
     </div>
-    <div
+    <!-- <div
       v-if="store.dataLength > 0"
       :class="store.dataLength > 0 ? 'header-left-menu' : 'hidden'"
     >
       <div class="flex justify-start">
         <SearchBoxHeaderSearchInputBox @update="changeValue" />
       </div>
-    </div>
+    </div> -->
 
     <div class="header-right-menu">
       <ULink to="/email">

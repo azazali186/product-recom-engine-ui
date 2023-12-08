@@ -121,6 +121,9 @@ const productSearch = async () => {
     const url = "/products/public?" + params;
     const res = await useCustomFetch({url});
     prod.value = res?.data?.list;
+    product.data = prod.value;
+    product.count = res.data.count;
+    product.query = search.value;
     prodState.setProductData(prod.value);
     console.log(prod.value);
   } catch (error) {
@@ -129,7 +132,7 @@ const productSearch = async () => {
 };
 
 onMounted(async () => {
-  search.value = store.queryData;
+  // search.value = store.queryData || product.query ;
   await getCatData();
   document.addEventListener("click", handleClickOutside);
 });

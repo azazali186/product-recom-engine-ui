@@ -68,6 +68,7 @@ const input = ref(false);
 const open = ref(false);
 const searchInput = ref(null);
 import store from "~/store";
+import product from "~/store/product";
 
 const catState = useCatData();
 
@@ -116,8 +117,11 @@ const productSearch = async () => {
     if (search.value.length > 2) queryData.search = search.value;
     const params = getQueryData(queryData);
     const url = "/products/public?" + params;
-    const res = await useCustomFetch({url});
+    const res = await useCustomFetch({ url });
     prod.value = res?.data?.list;
+    product.data = prod.value;
+    product.count = res.data.count;
+    product.query = search.value;
     prodState.setProductData(prod.value);
     console.log(prod.value);
   } catch (error) {
@@ -136,13 +140,14 @@ const getCatData = async () => {
     if (catState.getCatData()?.length > 0) {
       cat.value = catState.getCatData();
     } else {
-      const res = await useCustomFetch({url:"/category/public"});
+      const res = await useCustomFetch({ url: "/category/public" });
       cat.value = res?.data?.list;
       catState.setCatData(cat.value);
     }
   } catch (error) {
     console.log("err", error);
   }
+  product.catData = cat.value;
 };
 
 onUnmounted(() => {
