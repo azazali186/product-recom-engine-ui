@@ -61,6 +61,8 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import store from "~/store";
+import { getQueryData } from "~/helpers/Utils";
 const emit = defineEmits(["update"]);
 const input = ref(false);
 const open = ref(false);
@@ -91,10 +93,10 @@ const handleClickOutside = (event) => {
 };
 
 watch(search, () => {
-  if (search.value.length > 2) {
+  if (search.value?.length > 2) {
     searchFunction();
   }
-  if (search.value.length == 0) {
+  if (search.value?.length == 0) {
     resetFunction();
   }
 });
@@ -127,6 +129,7 @@ const productSearch = async () => {
 };
 
 onMounted(async () => {
+  search.value = store.queryData;
   await getCatData();
   document.addEventListener("click", handleClickOutside);
 });

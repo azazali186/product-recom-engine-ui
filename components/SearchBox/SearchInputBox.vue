@@ -67,6 +67,7 @@ const prod = ref([]);
 const input = ref(false);
 const open = ref(false);
 const searchInput = ref(null);
+import store from "~/store";
 
 const catState = useCatData();
 
@@ -93,7 +94,7 @@ const handleClickOutside = (event) => {
 };
 
 watch(search, () => {
-  if (search.value.length > 2) {
+  if (search.value?.length > 2) {
     searchFunction();
   }
 });
@@ -125,6 +126,7 @@ const productSearch = async () => {
 };
 
 onMounted(async () => {
+  search.value = store.queryData;
   await getCatData();
   document.addEventListener("click", handleClickOutside);
 });

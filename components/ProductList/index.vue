@@ -39,9 +39,10 @@
 </template>
 
 <script setup>
-const props = defineProps(["data", "query"]);
+const props = defineProps(["data"]);
 const products = ref(props.data);
-const query = ref(props.query);
+const query = ref("");
+import store from "~/store";
 import ProductCardVue from "./ProductCard.vue";
 const filters = [
   {
@@ -71,6 +72,13 @@ const filters = [
 ];
 const selected = ref(filters[0].id);
 
+watch(query,()=>{
+  query.value = store.queryData;
+})
+
+onMounted(()=>{
+  query.value = store.queryData;
+})
 
 const current = computed(() => filters.find((ct) => ct.id === selected.value));
 

@@ -7,7 +7,10 @@
         <img :src="logo" class="h-[50px]" />
       </ULink>
     </div>
-    <div v-if="display" :class="display ? 'header-left-menu' : 'hidden'">
+    <div
+      v-if="store.dataLength > 0"
+      :class="store.dataLength > 0 ? 'header-left-menu' : 'hidden'"
+    >
       <div class="flex justify-start">
         <SearchBoxHeaderSearchInputBox @update="changeValue" />
       </div>
@@ -41,8 +44,10 @@
 const route = useRouter();
 const currentRoute = route.currentRoute.value.fullPath;
 const show = currentRoute === "/" ? false : true;
-const display = ref(false);
 const data = ref([]);
+import store from "~/store/index";
+
+console.log("store header ", store);
 
 const query = ref("");
 
@@ -53,25 +58,20 @@ import logo from "../../assets/images/logo.png";
 onMounted(() => {
   data.value = prodState.getProductData();
   if (data.value?.length > 0) {
-    display.value = true;
+    store.showSearchBox = false;
   } else {
-    display.value = false;
+    store.showSearchBox = true;
   }
 });
 
-watch(display, () => {
-  console.log("display change to ", display.value);
-});
-
 const changeValue = (val) => {
-  console.log("header emit called");
-  query.value = val
+  query.value = val;
+  store.queryData = val;
   data.value = prodState.getProductData();
-  console.log("data. value", data.value);
   if (data.value?.length > 0) {
-    display.value = true;
+    store.showSearchBox = false;
   } else {
-    display.value = false;
+    store.showSearchBox = true;
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="search-engine-container" v-if="!show">
+  <div class="search-engine-container" v-if="store.showSearchBox">
     <div class="w-[30%] mb-10">
       <img :src="logo" />
     </div>
@@ -28,35 +28,38 @@
       </button>
     </div>
   </div>
-  <div v-else class="px-10 py-2 flex justify-center"><ProductsListVue :data="data" :query="query" /></div>
+  <div v-else class="px-10 py-2 flex justify-center">
+    <ProductsListVue :data="data" />
+  </div>
 </template>
 
 <script setup>
 import SearchInputBox from "./SearchInputBox";
 import ProductsListVue from "../ProductList";
 import logo from "../../assets/images/logo.png";
-const show = ref(false);
+import store from "~/store";
 const data = ref([]);
-const query = ref("")
 
 const prodState = useProductData();
 
+console.log("store searchBox ", store);
+
 onMounted(() => {
   data.value = prodState.getProductData();
-  if (data.value?.length > 0) {
-    show.value = true;
+  if (store.dataLength > 0) {
+    store.showSearchBox = false;
   } else {
-    show.value = false;
+    store.showSearchBox = true;
   }
 });
 
 const changeValue = (val) => {
-  query.value = val;
+  store.queryData = val;
   data.value = prodState?.getProductData();
-  if (data.value?.length > 0) {
-    show.value = true;
+  if (store.dataLength > 0) {
+    store.showSearchBox = false;
   } else {
-    show.value = false;
+    store.showSearchBox = true;
   }
 };
 </script>

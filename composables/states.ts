@@ -1,4 +1,5 @@
 ﻿import { ref, onMounted } from "vue";
+import store from "~/store";
 
 // useProductData
 export const useProductData = () => {
@@ -8,9 +9,16 @@ export const useProductData = () => {
   const getProductData = () => {
     if (
       localStorage.getItem("product-search-result-data") &&
-      localStorage.getItem("product-search-result-data") != null
+      localStorage.getItem("product-search-result-data") != null &&
+      localStorage.getItem("product-search-result-data") != "undefined"
     ) {
-      return JSON.parse(localStorage.getItem("product-search-result-data"));
+      const data = JSON.parse(
+        localStorage.getItem("product-search-result-data")
+      );
+
+      store.dataLength = data.length;
+
+      return data;
     }
     return null;
   };
@@ -18,13 +26,18 @@ export const useProductData = () => {
   // Setter function
   const setProductData = (data) => {
     if (data == null) {
+      store.dataLength = 0;
+      store.showSearchBox = true;
       localStorage.removeItem("product-search-result-data");
     } else {
+      store.dataLength = data.length;
       localStorage.setItem("product-search-result-data", JSON.stringify(data));
       productData.value = data;
     }
 
     if (productData.value?.length === 0) {
+      store.dataLength = 0;
+      store.showSearchBox = true;
       localStorage.removeItem("product-search-result-data");
     }
   };
@@ -32,7 +45,8 @@ export const useProductData = () => {
     try {
       if (
         localStorage.getItem("product-search-result-data") &&
-        localStorage.getItem("product-search-result-data") != null
+        localStorage.getItem("product-search-result-data") != null &&
+        localStorage.getItem("product-search-result-data") != "undefined"
       ) {
         setProductData(
           JSON.parse(localStorage.getItem("product-search-result-data"))
@@ -64,7 +78,8 @@ export const useCatData = () => {
     try {
       if (
         localStorage.getItem("search-engin-cat-data") &&
-        localStorage.getItem("search-engin-cat-data") != null
+        localStorage.getItem("search-engin-cat-data") != null &&
+        localStorage.getItem("search-engin-cat-data") != "undefined"
       ) {
         setCatData(JSON.parse(localStorage.getItem("search-engin-cat-data")));
       } else {
@@ -103,7 +118,7 @@ export const useQueryData = () => {
         localStorage.getItem("search-engin-query-data") != null
       ) {
         setQueryData(localStorage.getItem("search-engin-query-data"));
-      } 
+      }
       if (queryData.value == "") {
         localStorage.removeItem("search-engin-query-data");
       }
