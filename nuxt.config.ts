@@ -1,3 +1,8 @@
+import en from './i18n/translations/en.json'
+import km from './i18n/translations/km.json'
+import zh from './i18n/translations/zh.json'
+import hn from './i18n/translations/hn.json'
+import i18n from './i18n';
 export default defineNuxtConfig({
   app: {
     head: {
@@ -14,17 +19,15 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/ui",
     "nuxt-icon",
-    "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     "nuxt-swiper",
-    '@pinia/nuxt'
   ],
   devtools: {
     enabled: true,
   },
   runtimeConfig: {
     public: {
-      baseURL: process.env.NUXT_PUBLIC_BASE_URL || "http://127.0.0.1:4500",
+      baseURL: process.env.NUXT_PUBLIC_BASE_URL || "http://127.0.0.1:4500/api/v1",
     },
   },
 });

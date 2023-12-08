@@ -68,7 +68,7 @@ export const useCatData = () => {
       ) {
         setCatData(JSON.parse(localStorage.getItem("search-engin-cat-data")));
       } else {
-        const res = await useCustomFetch("/api/v1/category/public");
+        const res = await useCustomFetch("/category/public");
         setCatData(res?.data?.list);
       }
       if (catData.value?.length == 0) {

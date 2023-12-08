@@ -76,7 +76,7 @@ const show = ref(true);
 
 const submitLogin = async () => {
   try {
-    const res = await useCustomFetch("/api/v1/auth/login", {
+    const res = await useCustomFetch("/auth/login", {
       method: "POST",
       body: {
         username: username.value,

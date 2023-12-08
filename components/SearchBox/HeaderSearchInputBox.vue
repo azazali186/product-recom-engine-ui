@@ -116,7 +116,7 @@ const productSearch = async () => {
     if (search.value.length > 2) queryData.search = search.value;
     console.log("queryData ", queryData);
     const params = getQueryData(queryData);
-    const url = "/api/v1/products/public?" + params;
+    const url = "/products/public?" + params;
     const res = await useCustomFetch(url);
     prod.value = res?.data?.list;
     prodState.setProductData(prod.value);
@@ -136,7 +136,7 @@ const getCatData = async () => {
     if (catState.getCatData().length > 0) {
       cat.value = catState.getCatData();
     } else {
-      const res = await useCustomFetch("/api/v1/category/public");
+      const res = await useCustomFetch("/category/public");
       cat.value = res?.data?.list;
       catState.setCatData(cat.value);
     }

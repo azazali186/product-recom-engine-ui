@@ -61,7 +61,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import { getQueryData } from "~/composables/helper";
+import { getQueryData } from "~/helpers/Utils";
 const cat = ref([]);
 const prod = ref([]);
 const input = ref(false);
@@ -114,7 +114,7 @@ const productSearch = async () => {
     if (selected.value > 0) queryData.category_ids = selected.value;
     if (search.value.length > 2) queryData.search = search.value;
     const params = getQueryData(queryData);
-    const url = "/api/v1/products/public?" + params;
+    const url = "/products/public?" + params;
     const res = await useCustomFetch(url);
     prod.value = res?.data?.list;
     prodState.setProductData(prod.value);
@@ -134,7 +134,7 @@ const getCatData = async () => {
     if (catState.getCatData()?.length > 0) {
       cat.value = catState.getCatData();
     } else {
-      const res = await useCustomFetch("/api/v1/category/public");
+      const res = await useCustomFetch("/category/public");
       cat.value = res?.data?.list;
       catState.setCatData(cat.value);
     }
