@@ -63,19 +63,24 @@
 import { ref, watch } from "vue";
 import { getQueryData } from "~/composables/helper";
 const cat = ref([]);
+const prod = ref([]);
 const input = ref(false);
 const open = ref(false);
 const searchInput = ref(null);
+
+const catState = useCatData();
+
+const prodState = useProductData();
+
+const emit = defineEmits(["update"]);
 
 const search = ref("");
 
 const selected = ref();
 
 const current = computed(() =>
-  cat.value.find((ct) => ct.id === selected.value)
+  cat.value?.find((ct) => ct.id === selected.value)
 );
-
-console.log("cat is ", cat.value);
 
 const clas = " rounded-[50px] w-[40%] p-0.5 sp ";
 
@@ -98,11 +103,9 @@ watch(selected, () => {
 });
 
 const searchFunction = async () => {
-  console.log("Search is ", search.value);
-  console.log("selected is ", selected.value);
-  console.log("Search is called");
   await productSearch();
-  await getCatData()
+  await getCatData();
+  emit("update");
 };
 
 const productSearch = async () => {
@@ -110,31 +113,36 @@ const productSearch = async () => {
     const queryData = {};
     if (selected.value > 0) queryData.category_ids = selected.value;
     if (search.value.length > 2) queryData.search = search.value;
-
+    console.log("queryData ", queryData);
     const params = getQueryData(queryData);
-
     const url = "/api/v1/products/public?" + params;
     const res = await useCustomFetch(url);
-    cat.value = res.data.list;
+    prod.value = res?.data?.list;
+    prodState.setProductData(prod.value);
+    console.log(prod.value);
   } catch (error) {
-    console.log("err");
+    console.log("err", error);
   }
 };
 
 onMounted(async () => {
-  await getCatData()
+  await getCatData();
   document.addEventListener("click", handleClickOutside);
 });
 
-const getCatData = async () =>{
+const getCatData = async () => {
   try {
-    const res = await useCustomFetch("/api/v1/category/public");
-    cat.value = res.data.list;
-    console.log(cat.value);
+    if (catState.getCatData().length > 0) {
+      cat.value = catState.getCatData();
+    } else {
+      const res = await useCustomFetch("/api/v1/category/public");
+      cat.value = res?.data?.list;
+      catState.setCatData(cat.value);
+    }
   } catch (error) {
-    console.log("err");
+    console.log("err", error);
   }
-}
+};
 
 onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);

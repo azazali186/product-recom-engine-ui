@@ -90,7 +90,7 @@ const submitLogin = async () => {
     if (result?.user) {
       localStorage.setItem("search-engin-login-user", JSON.stringify(result.user));
     }
-    router.push("/dashboard");
+    navigateTo("/dashboard");
   } catch (error) {}
 };
 </script>

@@ -1,10 +1,10 @@
 <template>
-  <div class="search-engine-container" v-if="!data">
+  <div class="search-engine-container" v-if="!show">
     <div class="w-[30%] mb-10">
       <img :src="logo" />
     </div>
     <div class="w-full flex justify-center">
-      <SearchInputBox  />
+      <SearchInputBox @update="changeValue" />
     </div>
     <div class="flex gap-2 mt-5 p-3">
       <button
@@ -35,12 +35,30 @@
 import SearchInputBox from "./SearchInputBox";
 import ProductsListVue from "../ProductList";
 import logo from "../../assets/images/logo.png";
-const data = inject("data");
+const show = ref(false);
+const data = ref([]);
+
+onMounted(() => {
+  console.log("input called after change");
+  data.value = localStorage.getItem("product-search-result-data");
+  if (data.value?.length > 0) {
+    show.value = true;
+  } else {
+    show.value = false;
+  }
+});
+
+const changeValue = (val) => {
+  data.value = localStorage.getItem("product-search-result-data");
+  if (data.value?.length > 0) {
+    show.value = true;
+  } else {
+    show.value = false;
+  }
+};
 
 const clas = " rounded-[50px] w-[40%] p-0.5 sp ";
 
 const cat2 = ref([]);
 const cat = ref([]);
-
-
 </script>

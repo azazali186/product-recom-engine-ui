@@ -20,12 +20,11 @@
 import HeaderVue from "./header";
 import FooterVue from "./footer";
 const loading = ref(true);
-const router = useRouter();
 onMounted(() => {
   if (typeof window !== "undefined") {
     console.log(localStorage.getItem("search-engin-login-token"));
     if (!localStorage.getItem("search-engin-login-token")) {
-      router.push("/login");
+      navigateTo("/login");
     } else {
       loading.value = false;
     }

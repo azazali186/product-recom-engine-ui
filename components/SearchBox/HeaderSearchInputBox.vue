@@ -44,7 +44,7 @@
           color="gray"
           class="flex-1 justify-between search-engine-select-box-button"
         >
-          {{ current.label }}
+           {{ current?.name || "All Categories" }}
           <UIcon
             name="i-heroicons-chevron-right-20-solid"
             class="w-5 h-5 transition-transform text-gray-400 dark:text-gray-500"
@@ -52,7 +52,7 @@
           />
         </UButton>
         <template #label>
-          {{ current.label }}
+           {{ current?.name || "All Categories" }}
         </template>
       </USelectMenu>
 
@@ -70,94 +70,18 @@
 
 <script setup>
 import { ref, watch } from "vue";
+const emit = defineEmits(["update"]);
 const input = ref(false);
 const open = ref(false);
 const searchInput = ref(null);
 
 const search = ref("");
 
-const cat = [
-  {
-    id: 1,
-    label: "Cat 1894",
-  },
-  {
-    id: 2,
-    label: "Cat 16541",
-  },
-  {
-    id: 3,
-    label: "Cat 169874",
-  },
-  {
-    id: 4,
-    label: "Cat 1125",
-  },
-  {
-    id: 5,
-    label: "Cat 1365",
-  },
-  {
-    id: 6,
-    label: "Cat 1956",
-  },
-  {
-    id: 7,
-    label: "Cat 1365",
-  },
-  {
-    id: 7,
-    label: "Cat 1651",
-  },
-  {
-    id: 8,
-    label: "Cat 1",
-  },
-  {
-    id: 9,
-    label: "Cat 1",
-  },
-  {
-    id: 10,
-    label: "Cat 1",
-  },
-  {
-    id: 11,
-    label: "Cat 1",
-  },
-  {
-    id: 12,
-    label: "Cat 1",
-  },
-  {
-    id: 13,
-    label: "Cat 1",
-  },
-  {
-    id: 14,
-    label: "Cat 1",
-  },
-  {
-    id: 15,
-    label: "Cat 1",
-  },
-  {
-    id: 16,
-    label: "Cat 1",
-  },
-  {
-    id: 17,
-    label: "Cat 1",
-  },
-  {
-    id: 18,
-    label: "Cat 1",
-  },
-];
+const cat = ref([]);
 
-const selected = ref(cat[0].id);
+const selected = ref([]);
 
-const current = computed(() => cat.find((ct) => ct.id === selected.value));
+const current = computed(() => cat.value?.find((ct) => ct.id === selected.value));
 
 const clas = " rounded-[50px] p-0.5 sp relative ";
 
@@ -182,7 +106,59 @@ watch(selected, () => {
   searchFunction();
 });
 
+const searchFunction = async () => {
+  await productSearch();
+  await getCatData();
+  emit("update");
+};
+
+const productSearch = async () => {
+  try {
+    const queryData = {};
+    if (selected.value > 0) queryData.category_ids = selected.value;
+    if (search.value.length > 2) queryData.search = search.value;
+
+    const params = getQueryData(queryData);
+
+    const url = "/api/v1/products/public?" + params;
+    const res = await useCustomFetch(url);
+    prod.value = res.data.list;
+    console.log(prod.value);
+    if (prod.value?.length > 0) {
+      localStorage.setItem("product-search-result-data", prod.value);
+    } else {
+      localStorage.removeItem("product-search-result-data");
+    }
+  } catch (error) {
+    console.log("err", error);
+    localStorage.removeItem("product-search-result-data");
+  }
+};
+
+onMounted(async () => {
+  await getCatData();
+  document.addEventListener("click", handleClickOutside);
+});
+
+const getCatData = async () => {
+  try {
+    const res = await useCustomFetch("/api/v1/category/public");
+    cat.value = res.data.list;
+    if (cat.value?.length > 0) {
+      localStorage.setItem("search-engin-cat-data", JSON.stringify(cat.value));
+    } else {
+      localStorage.removeItem("search-engin-cat-data");
+    }
+  } catch (error) {
+    console.log("err");
+  }
+};
+
 onMounted(() => {
+  const catData = localStorage.getItem("search-engin-cat-data");
+  if (catData?.length > 0) {
+    cat.value = catData;
+  }
   document.addEventListener("click", handleClickOutside);
 });
 
@@ -190,13 +166,9 @@ onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
 });
 
-const searchFunction = () => {
-  console.log("Search is ", search.value);
-  console.log("selected is ", selected.value);
-  console.log("Search is called");
-};
-
 const resetFunction = () => {
   console.log("Reset is called");
+  localStorage.removeItem("product-search-result-data");
+  emit("update");
 };
 </script>
