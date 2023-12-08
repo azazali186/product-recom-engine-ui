@@ -28,7 +28,7 @@
               <img
                 :src="slide.url"
                 class="py-2 object-contain"
-                :alt="product.title"
+                :alt="productName"
               />
             </SwiperSlide>
           </Swiper>
@@ -37,9 +37,9 @@
           <span class="text-[15px] flex justify-start w-full">
             <ULink :to="url">
               <b>{{
-                product.title.length > 22
-                  ? `${product.title.slice(0, 22)}.....`
-                  : product.title
+                productName.length > 22
+                  ? `${productName.slice(0, 22)}.....`
+                  : productName
               }}</b></ULink
             >
           </span>
@@ -49,7 +49,7 @@
             <div class="flex gap-1 items-center">
               <b>Price: </b>
               <span class="text-green-600 text-base font-bold">{{
-                `${product.price}${product.currency}`
+                `${productPrice} ${priceSymbol}`
               }}</span>
             </div>
           </span>
@@ -61,10 +61,10 @@
         class="flip-card-back text-xs shadow-green-400 cursor-pointer shadow-sm m-5 p-5 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600 transition-shadow ease-in-out"
       >
         <div>
-          <p class="text-2xl">{{ product.title }}</p>
+          <p class="text-2xl">{{ productName }}</p>
         </div>
         <div class="flex flex-col justify-between items-center">
-          <UButton :to="url" block >View More</UButton>
+          <UButton :to="url" block>View More</UButton>
         </div>
       </div>
     </div>
@@ -74,6 +74,23 @@
 <script setup>
 const props = defineProps(["data"]);
 const product = ref(props.data);
+
+const productPrice = ref(0);
+const priceSymbol = ref("$");
+
+const productName = ref("");
+
+onMounted(() => {
+  if (product?.value?.stocks?.length > 0) {
+    productPrice.value = product?.value.stocks[0].price[0].price;
+  }
+  if (product?.value?.stocks?.price?.length > 0) {
+    priceSymbol.value = product?.value.stocks[0].price[0].price.currency.code;
+  }
+  if (product?.value?.translations?.length > 0) {
+    productName.value = product.value.translations[0].name;
+  }
+});
 
 const url = "/products/" + product?.value?.id;
 

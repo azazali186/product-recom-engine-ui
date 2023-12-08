@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="flex justify-center my-2 gap-10 relative flex-wrap">
-      <!-- <ProductCardVue v-if="products?.length > 0" v-for="product in products" :data="product" /> -->
+      <ProductCardVue v-if="products?.length > 0" v-for="product in products" :data="product" />
     </div>
   </div>
 </template>

@@ -8,14 +8,18 @@
       <div>
         <ProductDetailsProductDesc :data="product.description" />
       </div>
-      <div class="flex flex-col ">
-        <div class="text-2xl font-bold text-center mt-10">Recommended Products:</div>
+      <div class="flex flex-col">
+        <div class="text-2xl font-bold text-center mt-10">
+          Recommended Products:
+        </div>
         <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
           <ProductCardVue v-for="product in products" :data="product" />
         </div>
       </div>
-      <div class="flex flex-col ">
-        <div class="text-2xl font-bold text-center mt-10">Top Selling Products:</div>
+      <div class="flex flex-col">
+        <div class="text-2xl font-bold text-center mt-10">
+          Top Selling Products:
+        </div>
         <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
           <ProductCardVue v-for="product in products" :data="product" />
         </div>
@@ -26,11 +30,13 @@
           Customers Feedback: From 1 to 10
         </div>
         <div class="py-3" v-for="i in 10">
-          <ProductDetailsFeedbacks  />
+          <ProductDetailsFeedbacks />
         </div>
       </div>
-      <div class="flex flex-col ">
-        <div class="text-2xl font-bold text-center mt-10">Relavent Products:</div>
+      <div class="flex flex-col">
+        <div class="text-2xl font-bold text-center mt-10">
+          Relavent Products:
+        </div>
         <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
           <ProductCardVue v-for="product in products" :data="product" />
         </div>
@@ -44,191 +50,14 @@ import { onMounted } from "vue";
 
 import ImageSlider from "../../components/ProductDetails/imageSlider";
 import TopDetails from "../../components/ProductDetails/TopDetails";
-import ProductCardVue from '../../components/ProductList/ProductCard'
+import ProductCardVue from "../../components/ProductList/ProductCard";
+import store from "~/store";
 // https://picsum.photos/720/1080?random=100.webp
 const route = useRoute();
 const productId = ref(route.params.slug);
-const products = [
-  {
-    id: 1,
-    title: "Exclusive mobile with awesome features",
-    price: 400,
-    currency: "$",
-    quantity: 50,
-    images: [
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+1.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+2.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+3.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+4.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+5.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+6.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+7.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+8.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+9.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Exclusive+mobile+with+awesome+features+10.webp",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "High-end Smartphone with Advanced Features",
-    price: 600,
-    currency: "$",
-    quantity: 30,
-    images: [
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+1.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+2.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+3.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+4.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+5.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+6.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+7.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+8.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+9.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=High-end+Smartphone+with+Advanced+Features+10.webp",
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: "Premium Camera Phone for Photography Enthusiasts",
-    price: 800,
-    currency: "$",
-    quantity: 20,
-    images: [
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+1.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+2.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+3.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+4.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+5.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+6.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+7.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+8.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+9.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Premium+Camera+Phone+10.webp",
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "Smart Fitness Tracker with Health Monitoring",
-    price: 150,
-    currency: "$",
-    quantity: 50,
-    images: [
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+1.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+2.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+3.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+4.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+5.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+6.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+7.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+8.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+9.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Smart+Fitness+Tracker+10.webp",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "Ultimate Gaming Laptop",
-    price: 1200,
-    currency: "$",
-    quantity: 15,
-    images: [
-      {
-        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+1.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+2.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+3.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+4.webp",
-      },
-      {
-        url: "https://picsum.photos/720/1080?random=Gaming+Laptop+5.webp",
-      },
-    ],
-  },]
+
+const productData = ref({});
+
 const product = ref({
   id: 5,
   title: "Ultimate Gaming Laptop",
@@ -300,6 +129,21 @@ const product = ref({
       "Explore the ultimate gaming experience with our high-performance gaming laptop. Designed for gamers, this laptop features advanced graphics, a responsive keyboard, and a sleek design.",
     tags: ["Gaming", "Laptop", "Electronics", "TechEmpire"],
   },
+});
+
+onMounted(async () => {
+  store.isLoading = true;
+  try {
+    const res = await useCustomFetch({
+      url: `/products/public/${productId.value}`,
+    });
+    console.log("product details is ", res);
+    store.isLoading = false;
+  } catch (error) {
+    console.log("err", error);
+    store.isLoading = false;
+  }
+  store.isLoading = true;
 });
 
 useHead({
