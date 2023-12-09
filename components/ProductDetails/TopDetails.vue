@@ -11,9 +11,9 @@
     <h1>Quantity: {{ qty }} set available</h1>
     <br />
 
-    <div class="flex flex-row gap-5 items-center">
-      <div v-for="variation in variations">
-        <div class="flex flex-row gap-5 items-center">
+    <div class="flex flex-col gap-5 items-center">
+      <div  v-for="variation in variations" class=" w-full">
+        <div class="flex flex-row gap-5 w-full">
           <span
             ><b>{{ variation.name }}:</b></span
           >
