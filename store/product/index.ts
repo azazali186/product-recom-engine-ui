@@ -6,4 +6,9 @@ export default reactive({
   query: "",
   catData: [],
   selectedCat: null,
+  selectedProduct: {},
+  matchStock: {},
+  selectedVariarion: {},
+  stockTranslation: {},
+  translation: {},
 });

@@ -2,8 +2,8 @@
   <div class="flex justify-center">
     <div class="container flex flex-col mt-10">
       <div class="flex gap-5">
-        <Slider :data="product.images" :title="productTitle" />
-        <TopDetails :data="productData" />
+        <ImageSlider :data="product.images" :title="productTitle" />
+        <TopDetails :data="productData" :sellerInfo="sellerInfo" />
       </div>
       <div>
         <ProductDetailsProductDesc :data="productDescription" />
@@ -56,6 +56,15 @@ import productStore from "~/store/product";
 // https://picsum.photos/720/1080?random=100.webp
 const route = useRoute();
 const productId = ref(route.params.slug);
+
+const sellerInfo = ref({
+  name: "TechEmpire",
+  ratings: 4.8,
+  contact: "support@techempire.com",
+  fb: "https://fb.com",
+  tg: "0965655136",
+  wa: "0965655136",
+});
 
 const productData = ref({});
 const productTitle = ref("");
@@ -142,7 +151,7 @@ onMounted(async () => {
     });
     console.log("product details is ", res);
     productData.value = res.data;
-    productStore.data = productData.value;
+    productStore.selectedProduct = productData.value;
     store.isLoading = false;
   } catch (error) {
     console.log("err", error);

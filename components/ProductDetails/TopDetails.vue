@@ -1,36 +1,30 @@
 <template>
   <div class="mt-10 flex flex-col flex-wrap">
     <h1 class="text-4xl font-bold">
-      {{ name }}
+      {{ selectedVariation ? getVariationName : getName }}
     </h1>
     <br />
     <h1>
       Price:
-      <b
-        >{{ selectedVariation?.price || product.price
-        }}{{ product.currency }}</b
-      >
+      <b>{{ price }} {{ currency }}</b>
     </h1>
-    <h1>
-      Quantity: {{ selectedVariation?.quantity || product.quantity }} set
-      available
-    </h1>
+    <h1>Quantity: {{ qty }} set available</h1>
     <br />
 
     <div class="flex flex-row gap-5 items-center">
-      <div v-for="variation in product.variations">
+      <div v-for="variation in variations">
         <div class="flex flex-row gap-5 items-center">
           <span
             ><b>{{ variation.name }}:</b></span
           >
           <UBadge
             v-for="val in variation.values"
-            @click="selectedVariation = val"
-            :color="selectedVariation == val ? 'blue' : 'white'"
+            @click="selectVariation(val)"
+            :color="selectedVariation == val ? 'green' : 'white'"
             variant="solid"
             class="cursor-pointer px-[20px] shadow-sm shadow-green-400"
             :ui="{ rounded: 'rounded-full' }"
-            >{{ val.id }}</UBadge
+            >{{ val }}</UBadge
           >
         </div>
       </div>
@@ -43,12 +37,12 @@
         Shop Name:
         <ULink :to="'/shops/' + seller.name" block
           ><b>{{ seller.name }}</b></ULink
-        >  
+        >
         <ULink :to="'/shops/' + seller.name" block
           ><UAvatar
-          src="https://avatars.githubusercontent.com/u/739984?v=4"
-          :alt="seller.name"
-          class="cursor-pointer"
+            src="https://avatars.githubusercontent.com/u/739984?v=4"
+            :alt="seller.name"
+            class="cursor-pointer"
         /></ULink>
       </div>
       <div>
@@ -56,8 +50,10 @@
       </div>
     </div>
     <br />
-    <h1 v-if="product?.keyPoints?.length > 0 " class="text-xl font-bold">{{ product.title }} Key Points</h1>
-    <ul v-if="product?.keyPoints?.length > 0 " >
+    <h1 v-if="product?.keyPoints?.length > 0" class="text-xl font-bold">
+      {{ selectedVariation ? getVariationName : getName }} Key Points
+    </h1>
+    <ul v-if="product?.keyPoints?.length > 0">
       <li class="font-bold" v-for="(keyword, index) in product?.keyPoints">
         {{ index + 1 }}. {{ keyword }}
       </li>
@@ -65,20 +61,33 @@
     <br />
     <div class="flex gap-3 items-center">
       <ULink :to="'/shops/' + seller.name" block
-          ><button
-        class="w-[135px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-      >
-        <span
-          class="relative px-5 py-2.5 hover:text-white font-bold dark:text-white transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+        ><button
+          class="w-[135px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
         >
-          Contact Seller
-        </span>
-      </button></ULink>
+          <span
+            class="relative px-5 py-2.5 hover:text-white font-bold dark:text-white transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+          >
+            Contact Seller
+          </span>
+        </button></ULink
+      >
 
-      <TelegramIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg" :mobile="seller.tg" />
-      <WhatsAppIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-green-400 shadow-lg" :mobile="seller.wa" />
-      <FacebookIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg" :link="seller.fb" />
-      <EmailIcon class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-red-400 shadow-lg cursor-pointer" :email="seller.contact" />
+      <TelegramIcon
+        class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg"
+        :mobile="seller.tg"
+      />
+      <WhatsAppIcon
+        class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-green-400 shadow-lg"
+        :mobile="seller.wa"
+      />
+      <FacebookIcon
+        class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg"
+        :link="seller.fb"
+      />
+      <EmailIcon
+        class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-red-400 shadow-lg cursor-pointer"
+        :email="seller.contact"
+      />
     </div>
   </div>
 </template>
@@ -88,15 +97,75 @@ import TelegramIcon from "../Icons/TelegramAnimated";
 import WhatsAppIcon from "../Icons/WhatsApp";
 import FacebookIcon from "../Icons/FacebookAnimated";
 import EmailIcon from "../Icons/EmailAnimated";
-const props = defineProps(["data"]);
-const product = ref(props.data);
-const seller = ref(props.data?.sellerInfo);
-const selectedVariation = ref();
-const name = ref("")
+const props = defineProps(["sellerInfo"]);
+const seller = ref(props.sellerInfo);
+const selectedVariation = ref(null);
 
+const price = ref(0);
+const currency = ref(null);
+const qty = ref();
 
-onMounted(()=>{
+const selectVariation = (val) => {
+  selectedVariation.value = val;
+};
 
-})
+import productStore from "~/store/product";
+import { convertVariationsArray } from "~/helpers/Utils";
 
+watch(productStore, () => {
+  console.log("product watch", productStore.selectedProduct);
+});
+
+const getName = computed(() => {
+  if (productStore?.selectedProduct?.translations?.length > 0) {
+    qty.value = productStore.selectedProduct.quantity;
+    productStore.translation = productStore.selectedProduct.translations[0];
+    if (productStore?.selectedProduct?.stocks?.length > 0) {
+      console.log("price", productStore.selectedProduct.stocks[0].price[0]);
+      price.value = productStore.selectedProduct.stocks[0].price[0]?.price;
+      currency.value =
+        productStore.selectedProduct.stocks[0].price[0]?.currency?.symbol;
+    }
+    qty.value = productStore.selectedProduct.quantity;
+    return productStore.selectedProduct.translations[0].name;
+  }
+  return "";
+});
+
+watch(selectedVariation, () => {
+  console.log("Selected valriations ", selectedVariation.value);
+  console.log(getVariationName);
+});
+
+const getVariationName = computed(() => {
+  console.log("getVariationName called");
+  if (selectedVariation.value) {
+    const matchingStock = productStore.selectedProduct.stocks.find((st) => {
+      return (
+        st?.translations?.length > 0 &&
+        st.variation?.value === selectedVariation.value
+      );
+    });
+
+    if (matchingStock) {
+      productStore.matchStock = matchingStock;
+      productStore.selectedVariarion = selectedVariation;
+      productStore.stockTranslation = matchingStock.translations[0];
+      qty.value = matchingStock.quantity;
+      price.value = matchingStock.price[0]?.price;
+      currency.value = matchingStock.price[0]?.currency?.symbol;
+      return matchingStock.translations[0].name;
+    }
+  }
+  return "";
+});
+
+const variations = computed(() => {
+  if (productStore?.selectedProduct?.variations?.length > 0) {
+    const v = convertVariationsArray(productStore.selectedProduct.variations);
+    console.log("variations are ", v);
+    return v;
+  }
+  return null;
+});
 </script>

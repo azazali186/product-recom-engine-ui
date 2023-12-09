@@ -11,13 +11,33 @@ export const getQueryData = (jsonObject: any) => {
   return queryParams;
 };
 
-
 class CustomError extends Error {
   constructor(message: string | undefined) {
     super(message);
     this.name = ""; // set the name property to identify the error type
   }
 }
+export const convertVariationsArray = (inputArray: any[]) => {
+  const result:any[] = [];
+
+  inputArray.forEach((item) => {
+    const existingItem = result.find(
+      (resultItem) => resultItem.name === item.name
+    );
+
+    if (existingItem) {
+      existingItem.values.push(item.value);
+    } else {
+      result.push({
+        name: item.name,
+        values: [item.value],
+      });
+    }
+  });
+
+  return result;
+};
+
 export default class Utils {
   static getErrorMessage(err: any) {
     console.log(err.response);
@@ -39,16 +59,22 @@ export default class Utils {
   }
 
   static hasPermissions(requiredPermissions: any[]) {
-    let permissions = auth.state.user.permissions.filter((permission: string) => {
-      return requiredPermissions
-        .map((p: string) => p.toLowerCase())
-        .includes(permission.toLowerCase());
-    });
+    let permissions = auth.state.user.permissions.filter(
+      (permission: string) => {
+        return requiredPermissions
+          .map((p: string) => p.toLowerCase())
+          .includes(permission.toLowerCase());
+      }
+    );
 
     return permissions.length > 0;
   }
 
-  static formatCurrency(amount: number | bigint, currency = "USD", locale = "en") {
+  static formatCurrency(
+    amount: number | bigint,
+    currency = "USD",
+    locale = "en"
+  ) {
     return new Intl.NumberFormat(locale, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -145,7 +171,11 @@ export default class Utils {
     }
   }
 
-  static onlyPostiveIntegerEmpty(evt: any, canStartWithZero = false, length = 12) {
+  static onlyPostiveIntegerEmpty(
+    evt: any,
+    canStartWithZero = false,
+    length = 12
+  ) {
     let pattern = /^\d*[0-9]\d*$/;
 
     if (!pattern.test(evt.target.value)) {
@@ -210,7 +240,10 @@ export default class Utils {
     }
   }
   //Only numbers are allowed carriers
-  static validationOnlyNumberDecimalEvent(evt: { target: { value: string; }; }, space = true) {
+  static validationOnlyNumberDecimalEvent(
+    evt: { target: { value: string } },
+    space = true
+  ) {
     let pattern = /^[0-9.]*$/;
     let matches = evt.target.value.match(/\./g);
     // console.log(matches,'match');
@@ -270,7 +303,12 @@ export default class Utils {
     );
   }
 
-  static filterDropdownOptions(options: any[], value: string, updateFn: (arg0: { (): any; (): void; }) => void, searchField = "") {
+  static filterDropdownOptions(
+    options: any[],
+    value: string,
+    updateFn: (arg0: { (): any; (): void }) => void,
+    searchField = ""
+  ) {
     let filtered: never[] = [];
 
     if (value === "") {
@@ -304,7 +342,12 @@ export default class Utils {
     }
   }
 
-  static throttle = (fn: (arg0: any) => void, delay: number, pause = false, override = false) => {
+  static throttle = (
+    fn: (arg0: any) => void,
+    delay: number,
+    pause = false,
+    override = false
+  ) => {
     console.log("throttle");
     let lastTime = 0;
 
