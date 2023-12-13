@@ -15,18 +15,37 @@
     <!-- most visited  -->
     <!-- recommended products from buyer  -->
     <div class="banner w-full h-[320px]">
-      <div class="banner w-full h-[240px] flex justify-end" :style="bannerStyle">
-        <div class="text-2xl font-bold pt-72 underline w-[50%] ">
-            Catalogues
-        </div>
-        <div class="text-2xl flex flex-col items-center gap-2 font-bold pt-60 pr-10 underline ">
-            {{ data.name }}
-            <div class="flex gap-5">
-                <span class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"><IconsFacebookAnimated /></span>
-                <span class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"><IconsTelegramAnimated /></span>
-                <span class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"><IconsWhatsApp /></span>
-                <span class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"><IconsEmailAnimatedWithoutEmail /></span>                
-            </div>
+      <div
+        class="banner w-full h-[240px] flex justify-end"
+        :style="bannerStyle"
+      >
+        <div class="text-2xl font-bold pt-72 underline w-[50%]">Catalogues</div>
+        <div
+          class="text-2xl flex flex-col items-center gap-2 font-bold pt-60 pr-10 underline"
+        >
+          {{ data.name }}
+          <div class="flex gap-5">
+            <span
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              ><IconsFacebookAnimated
+            /></span>
+            <span
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              ><IconsTelegramAnimated
+            /></span>
+            <span
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              ><IconsWhatsApp
+            /></span>
+            <span
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              ><IconsEmailAnimatedWithoutEmail
+            /></span>
+            <span
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              ><IconsTelephone
+            /></span>
+          </div>
         </div>
         <div class="w-[320px] h-[320px] pt-[70px] mr-[100px]">
           <img
@@ -38,7 +57,7 @@
       </div>
     </div>
     <div>
-        <h1>Hello Darling</h1>
+      <h1>Hello Darling</h1>
     </div>
   </div>
 </template>
