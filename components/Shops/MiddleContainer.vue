@@ -19,8 +19,14 @@
         <div class="text-2xl font-bold pt-72 underline w-[50%] ">
             Catalogues
         </div>
-        <div class="text-2xl font-bold pt-60 pr-10 underline ">
+        <div class="text-2xl flex flex-col items-center gap-2 font-bold pt-60 pr-10 underline ">
             {{ data.name }}
+            <div class="flex gap-5">
+                <span class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"><IconsFacebookAnimated /></span>
+                <span class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"><IconsTelegramAnimated /></span>
+                <span class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"><IconsWhatsApp /></span>
+                <span class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"><IconsEmailAnimatedWithoutEmail /></span>                
+            </div>
         </div>
         <div class="w-[320px] h-[320px] pt-[70px] mr-[100px]">
           <img
