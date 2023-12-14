@@ -58,12 +58,84 @@
     </div>
     <div class="mt-28">
       <div class="prod-container mx-auto my-8">
-        <h1 class="text-4xl font-bold mb-4">Product Catalog</h1>
-        <div class="product-container">
+        <h1 class="text-4xl font-bold mb-4">Product Catalogs</h1>
+        <div class="product-container hide-scrollbar">
           <div
-            v-for="product in products"
-            :key="product.id"
-            class="product-card "
+            v-for="(product, index) in products"
+            :key="index"
+            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
+          >
+            <img
+              :src="product.image"
+              :alt="product.name"
+              class="product-image"
+            />
+            <h2 class="product-name">Catalogue {{ index }}</h2>
+            <!-- <p class="product-price">${{ product.price.toFixed(2) }}</p> -->
+          </div>
+        </div>
+      </div>
+      <div class="prod-container mx-auto my-8">
+        <h1 class="text-4xl font-bold mb-4">Top Selling products</h1>
+        <div class="product-container hide-scrollbar">
+          <div
+            v-for="(product, index) in products"
+            :key="index"
+            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
+          >
+            <img
+              :src="product.image"
+              :alt="product.name"
+              class="product-image"
+            />
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-price">${{ product.price.toFixed(2) }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="prod-container mx-auto my-8">
+        <h1 class="text-4xl font-bold mb-4">Top Catagories</h1>
+        <div class="product-container hide-scrollbar">
+          <div
+            v-for="(product, index) in products"
+            :key="index"
+            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
+          >
+            <img
+              :src="product.image"
+              :alt="product.name"
+              class="product-image"
+            />
+            <h2 class="product-name">Catagory {{ index }}</h2>
+            <!-- <p class="product-price">${{ product.price.toFixed(2) }}</p> -->
+          </div>
+        </div>
+      </div>
+      <div class="prod-container mx-auto my-8">
+        <h1 class="text-4xl font-bold mb-4">Most Popullar products</h1>
+        <div class="product-container hide-scrollbar">
+          <div
+            v-for="(product, index) in products"
+            :key="index"
+            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
+          >
+            <img
+              :src="product.image"
+              :alt="product.name"
+              class="product-image"
+            />
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-price">${{ product.price.toFixed(2) }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="prod-container mx-auto my-8">
+        <h1 class="text-4xl font-bold mb-4">Most Liked products</h1>
+        <div class="product-container hide-scrollbar">
+          <div
+            v-for="(product, index) in products"
+            :key="index"
+            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
           >
             <img
               :src="product.image"
@@ -94,42 +166,55 @@ const bannerStyle = `background-image: url(${banner.value.url}); z-index: -3`;
 const products = [
   {
     id: 1,
-    name: "Product 1",
-    price: 19.99,
+    name: "Product",
+    price: 29.00,
     image:
-      "https://picsum.photos/720/1080?random=Gaming+Laptop+16GB+512GB.webp",
+      "https://picsum.photos/1080/1080?random=Gaming+Laptop+16GB+512GB.webp",
   },
   {
     id: 2,
-    name: "Product 2",
-    price: 29.99,
-    image: "https://picsum.photos/720/1080?random=Gaming+Laptop+32GB+1TB.webp",
+    name: "Product",
+    price: 29.00,
+    image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
   },
   {
     id: 1,
-    name: "Product 1",
-    price: 19.99,
+    name: "Product",
+    price: 29.00,
     image:
-      "https://picsum.photos/720/1080?random=Gaming+Laptop+16GB+512GB.webp",
+      "https://picsum.photos/1080/1080?random=Gaming+Laptop+16GB+512GB.webp",
   },
   {
     id: 2,
-    name: "Product 2",
-    price: 29.99,
-    image: "https://picsum.photos/720/1080?random=Gaming+Laptop+32GB+1TB.webp",
+    name: "Product",
+    price: 29.00,
+    image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
   },
   {
     id: 1,
-    name: "Product 1",
-    price: 19.99,
+    name: "Product",
+    price: 29.00,
     image:
-      "https://picsum.photos/720/1080?random=Gaming+Laptop+16GB+512GB.webp",
+      "https://picsum.photos/1080/1080?random=Gaming+Laptop+16GB+512GB.webp",
   },
   {
     id: 2,
-    name: "Product 2",
-    price: 29.99,
-    image: "https://picsum.photos/720/1080?random=Gaming+Laptop+32GB+1TB.webp",
+    name: "Product",
+    price: 29.00,
+    image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
+  },
+  {
+    id: 1,
+    name: "Product",
+    price: 29.00,
+    image:
+      "https://picsum.photos/1080/1080?random=Gaming+Laptop+16GB+512GB.webp",
+  },
+  {
+    id: 2,
+    name: "Product",
+    price: 29.00,
+    image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
   },
   // Add more products as needed
 ];
@@ -139,19 +224,17 @@ const products = [
 
 .product-container {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
+  overflow-x: scroll;
+  padding: 20px;
 }
 
 .product-card {
   box-sizing: border-box;
-  width: 100%;
-  max-width: calc(25% - 1rem); /* Four cards in a row with 1rem spacing */
   border: 1px solid #ddd;
   padding: 16px;
   border-radius: 12px;
   transition: transform 0.2s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {
     transform: scale(1.05);
@@ -159,12 +242,13 @@ const products = [
 }
 
 .prod-container {
-  max-width: 1200px;
+  max-width: 90%;
   margin: 0 auto;
+  overflow: auto;
 }
 
 .product-image {
-  width: 100%;
+  max-width: 250px;
   height: 250px; /* Adjust the height as needed */
   object-fit: cover;
   border-radius: 8px;
