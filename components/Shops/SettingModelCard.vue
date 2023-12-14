@@ -67,13 +67,6 @@
         ></span>
       </div>
     </div>
-
-    <!-- <template #footer>
-      <div class="flex justify-center items-center">
-        <ButtonsSave onclick="update" />
-        <ButtonsCancel />
-      </div>
-    </template> -->
   </UCard>
 </template>
 
