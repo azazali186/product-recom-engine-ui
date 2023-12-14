@@ -1,8 +1,4 @@
-import en from './i18n/translations/en.json'
-import km from './i18n/translations/km.json'
-import zh from './i18n/translations/zh.json'
-import hn from './i18n/translations/hn.json'
-import i18n from './i18n';
+
 export default defineNuxtConfig({
   app: {
     head: {

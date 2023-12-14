@@ -13,6 +13,4 @@ useSeoMeta({
   description:
     "This is the product search engine. It saves your searching time for the product it provide you the best and suitable result based on your searching product.",
 });
-
-provide("data", false);
 </script>
