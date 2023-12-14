@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div :style="{ background: theme.theme.bgColor, color: theme.theme.txColor }">
+    
     <div
       class="flex w-full h-screen justify-center items-center"
       v-if="loading"
@@ -20,6 +21,13 @@
 import HeaderVue from "./header";
 import FooterVue from "./footer";
 import store from "~/store";
+
+import theme from "~/store/theme";
+
+watch(theme, () => {
+  console.log("theme change ", theme);
+});
+
 const loading = ref(true);
 onMounted(() => {
   loading.value = store.isLoading;

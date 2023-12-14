@@ -1,6 +1,7 @@
 <template>
   <div
     class="shop-mid-centainer w-full flex-col flex overflow-y-scroll hide-scrollbar"
+    :style="{ background: bgColor }"
   >
     <!-- seller background and text color configuration load -->
     <!-- banner background -->
@@ -14,6 +15,24 @@
     <!-- top liked products  -->
     <!-- most visited  -->
     <!-- recommended products from buyer  -->
+    <UModal
+      v-model="isOpen"
+      :ui="{
+        base:'min-w-[1200px]',
+        rounded: 'rounded-lg',
+      }"
+    >
+      <ShopsSettingModelCard />
+    </UModal>
+    <div class="absolute right-0 top-[50%]">
+      <div
+        class="cursor-pointer rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400 bg-green-400"
+        :style="{ borderColor: theme.theme.avtarRingColor, background: theme.theme.avtarRingColor }"
+        @click="isOpen = true"
+      >
+        <IconsSettings />
+      </div>
+    </div>
     <div class="banner w-full h-[320px]">
       <div
         class="banner w-full h-[240px] flex justify-end"
@@ -22,27 +41,28 @@
         <!-- <div class="text-2xl font-bold pt-72 underline w-[50%]">Catalogues</div> -->
         <div
           class="text-2xl flex flex-col items-center gap-2 font-bold pt-60 pr-10 underline"
+          :style="{ color: theme.theme.snColor }"
         >
           {{ data.name }}
           <div class="flex gap-5">
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
               ><IconsFacebookAnimated
             /></span>
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
               ><IconsTelegramAnimated
             /></span>
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
               ><IconsWhatsApp
             /></span>
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
               ><IconsEmailAnimatedWithoutEmail
             /></span>
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400"
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
               ><IconsTelephone
             /></span>
           </div>
@@ -50,7 +70,8 @@
         <div class="w-[320px] h-[320px] pt-[70px] mr-[100px]">
           <img
             :src="avtar.url"
-            class="right-0 object-cover w-[320px] h-[320px] items-center justify-center rounded-full border-[10px] border-green-400"
+            class="right-0 object-cover w-[320px] h-[320px] items-center justify-center rounded-full border-[10px]"
+            :style="{ borderColor: theme.theme.avtarRingColor }"
             alt=""
           />
         </div>
@@ -58,7 +79,12 @@
     </div>
     <div class="mt-28">
       <div class="prod-container mx-auto my-8">
-        <h1 class="text-4xl font-bold mb-4">Product Catalogs</h1>
+        <h1
+          class="text-4xl font-bold mb-4"
+          :style="{ color: theme.theme.hdColor }"
+        >
+          Product Catalogs
+        </h1>
         <div class="product-container hide-scrollbar">
           <div
             v-for="(product, index) in products"
@@ -76,7 +102,12 @@
         </div>
       </div>
       <div class="prod-container mx-auto my-8">
-        <h1 class="text-4xl font-bold mb-4">Top Selling products</h1>
+        <h1
+          class="text-4xl font-bold mb-4"
+          :style="{ color: theme.theme.hdColor }"
+        >
+          Top Selling products
+        </h1>
         <div class="product-container hide-scrollbar">
           <div
             v-for="(product, index) in products"
@@ -94,7 +125,12 @@
         </div>
       </div>
       <div class="prod-container mx-auto my-8">
-        <h1 class="text-4xl font-bold mb-4">Top Catagories</h1>
+        <h1
+          class="text-4xl font-bold mb-4"
+          :style="{ color: theme.theme.hdColor }"
+        >
+          Top Catagories
+        </h1>
         <div class="product-container hide-scrollbar">
           <div
             v-for="(product, index) in products"
@@ -112,7 +148,12 @@
         </div>
       </div>
       <div class="prod-container mx-auto my-8">
-        <h1 class="text-4xl font-bold mb-4">Most Popullar products</h1>
+        <h1
+          class="text-4xl font-bold mb-4"
+          :style="{ color: theme.theme.hdColor }"
+        >
+          Most Popullar products
+        </h1>
         <div class="product-container hide-scrollbar">
           <div
             v-for="(product, index) in products"
@@ -130,7 +171,12 @@
         </div>
       </div>
       <div class="prod-container mx-auto my-8">
-        <h1 class="text-4xl font-bold mb-4">Most Liked products</h1>
+        <h1
+          class="text-4xl font-bold mb-4"
+          :style="{ color: theme.theme.hdColor }"
+        >
+          Most Liked products
+        </h1>
         <div class="product-container hide-scrollbar">
           <div
             v-for="(product, index) in products"
@@ -154,8 +200,15 @@
 <script setup>
 const props = defineProps(["shopInfo", "banner"]);
 const data = ref(props.shopInfo);
+const isOpen = ref(false);
+import theme from "~/store/theme";
+
 const banner = ref({
   url: "https://picsum.photos/2160/360?random=3652.webp",
+});
+
+watch(theme, () => {
+  console.log("theme change ");
 });
 
 const avtar = ref({
@@ -167,53 +220,53 @@ const products = [
   {
     id: 1,
     name: "Product",
-    price: 29.00,
+    price: 29.0,
     image:
       "https://picsum.photos/1080/1080?random=Gaming+Laptop+16GB+512GB.webp",
   },
   {
     id: 2,
     name: "Product",
-    price: 29.00,
+    price: 29.0,
     image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
   },
   {
     id: 1,
     name: "Product",
-    price: 29.00,
+    price: 29.0,
     image:
       "https://picsum.photos/1080/1080?random=Gaming+Laptop+16GB+512GB.webp",
   },
   {
     id: 2,
     name: "Product",
-    price: 29.00,
+    price: 29.0,
     image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
   },
   {
     id: 1,
     name: "Product",
-    price: 29.00,
+    price: 29.0,
     image:
       "https://picsum.photos/1080/1080?random=Gaming+Laptop+16GB+512GB.webp",
   },
   {
     id: 2,
     name: "Product",
-    price: 29.00,
+    price: 29.0,
     image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
   },
   {
     id: 1,
     name: "Product",
-    price: 29.00,
+    price: 29.0,
     image:
       "https://picsum.photos/1080/1080?random=Gaming+Laptop+16GB+512GB.webp",
   },
   {
     id: 2,
     name: "Product",
-    price: 29.00,
+    price: 29.0,
     image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
   },
   // Add more products as needed
@@ -221,7 +274,6 @@ const products = [
 </script>
 
 <style scoped>
-
 .product-container {
   display: flex;
   gap: 1rem;
