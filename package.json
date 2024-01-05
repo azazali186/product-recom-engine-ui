@@ -28,6 +28,7 @@
     "moment": "^2.29.4",
     "nuxt-swiper": "^1.2.2",
     "qs": "^6.11.2",
+    "telegraf": "^4.15.3",
     "vue-color-kit": "^1.0.6",
     "vue-i18n": "^9.8.0"
   }
