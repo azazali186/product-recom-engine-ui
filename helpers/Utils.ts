@@ -18,7 +18,7 @@ class CustomError extends Error {
   }
 }
 export const convertVariationsArray = (inputArray: any[]) => {
-  const result:any[] = [];
+  const result: any[] = [];
 
   inputArray.forEach((item) => {
     const existingItem = result.find(

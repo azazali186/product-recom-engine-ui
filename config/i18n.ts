@@ -3,7 +3,7 @@ import messages from "~/i18n";
 
 // set locals to local storage
 
-let locale = "en";
+let locale: any = "en";
 if (typeof window !== "undefined") {
   locale = localStorage.getItem("locale");
   localStorage.setItem("locale", locale ? locale : "en");
@@ -13,6 +13,7 @@ if (typeof window !== "undefined") {
 const i18n = createI18n({
   legacy: false,
   locale: locale,
+  fallbackLocale: 'en',
   globalInjection: true,
   messages,
 });

@@ -8,4 +8,5 @@ export default reactive({
   isOne: true,
   menuSelect: 0,
   queryData: "",
+  locale: "en",
 });
