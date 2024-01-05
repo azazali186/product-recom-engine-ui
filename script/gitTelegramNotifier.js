@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const { Telegram } = require('telegraf');
+import { Telegram } from "telegraf";
 
 const sendTelegramMessage = (msg) => {
   try {
