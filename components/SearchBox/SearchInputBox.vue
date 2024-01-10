@@ -14,12 +14,12 @@
       <input
         v-model="search"
         type="text"
-        class="search-engine-input-box mw-550"
+        class="search-engine-input-box mw-full"
         placeholder="Search your needed products..."
         ref="searchInput"
       />
 
-      <USelectMenu
+      <!-- <USelectMenu
         v-model="selected"
         :options="cat"
         placeholder="Select Category"
@@ -45,7 +45,7 @@
         <template #label>
           {{ current?.name || "All Categories" }}
         </template>
-      </USelectMenu>
+      </USelectMenu> -->
 
       <!-- <Icon
         class="search-engine-search-box-icon mh-30 color-mic"
