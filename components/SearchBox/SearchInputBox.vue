@@ -116,7 +116,7 @@ const productSearch = async () => {
     if (selected.value > 0) queryData.category_ids = selected.value;
     if (search.value.length > 2) queryData.search = search.value;
     const params = getQueryData(queryData);
-    const url = "/products/public?" + params;
+    const url = "/search?" + params;
     const res = await useCustomFetch({ url });
     prod.value = res?.data?.list;
     product.data = prod.value;

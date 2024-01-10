@@ -147,7 +147,7 @@ onMounted(async () => {
   store.isLoading = true;
   try {
     const res = await useCustomFetch({
-      url: `/products/public/${productId.value}`,
+      url: `/search/${productId.value}`,
     });
     console.log("product details is ", res);
     productData.value = res.data;

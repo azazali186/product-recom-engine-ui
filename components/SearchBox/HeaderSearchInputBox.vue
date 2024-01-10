@@ -118,7 +118,7 @@ const productSearch = async () => {
     if (search.value.length > 2) queryData.search = search.value;
     console.log("queryData ", queryData);
     const params = getQueryData(queryData);
-    const url = "/products/public?" + params;
+    const url = "/search?" + params;
     const res = await useCustomFetch({url});
     prod.value = res?.data?.list;
     product.data = prod.value;
