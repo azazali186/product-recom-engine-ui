@@ -9,4 +9,7 @@ export default reactive({
   menuSelect: 0,
   queryData: "",
   locale: "en",
+  data: [],
+  count: 0,
+  query: "",
 });

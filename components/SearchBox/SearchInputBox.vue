@@ -54,50 +54,63 @@
             <table class="w-full border-2">
               <thead class="border-2">
                 <tr>
-                  <th v-if="prod.length>0">
-                    <table class="w-full border-2">
-                      <thead class="border-2">
-                        <tr class="border-2">
-                          <th class="border-2 font-bold  text-[18px]">Product Name</th>
-                        </tr>
-                      </thead>
-                      <tbody class="border-2">
-                        <tr class="border-2" v-for="pd in prod">
-                          <td class="border-2">{{ pd.translations[0].name }}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <th class="border-2 w-[40%] font-bold text-[14px]">
+                    Product Name
                   </th>
-                  <th v-if="category.length>0">
-                    <table class="w-full border-2">
-                      <thead class="border-2">
-                        <tr class="border-2">
-                          <th class="border-2 font-bold text-[18px]">Category Name</th>
-                        </tr>
-                      </thead>
-                      <tbody class="border-2">
-                        <tr class="border-2" v-for="cats in category">
-                          <td class="border-2">{{ cats.translations[0].name }}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <th class="border-2 w-[30%] font-bold text-[14px]">
+                    Category Name
                   </th>
-                  <th v-if="shop.length>0">
-                    <table class="w-full border-2">
-                      <thead class="border-2">
-                        <tr class="border-2">
-                          <th class="border-2 font-bold text-[18px]">Shop Name</th>
-                        </tr>
-                      </thead>
-                      <tbody class="border-2">
-                        <tr class="border-2" v-for="sp in shop">
-                          <td class="border-2">{{ sp.name }}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <th class="border-2 w-[30%] font-bold text-[14px]">
+                    Shop Name
                   </th>
                 </tr>
               </thead>
+              <tbody>
+                <tr class="border-2" v-for="pd in searchData">
+                  <td
+                    class="border-2 text-[12px] px-2 py-1"
+                    style="line-height: 20px"
+                    @click="
+                      () => {
+                        selData = {
+                          name: 'product',
+                          value: searchInput,
+                        };
+                      }
+                    "
+                  >
+                    {{ pd.product }}
+                  </td>
+                  <td
+                    class="border-2 text-[12px] px-2 py-1"
+                    style="line-height: 20px"
+                    @click="
+                      () => {
+                        selData = {
+                          name: 'category',
+                          value: pd.category,
+                        };
+                      }
+                    "
+                  >
+                    {{ pd.category }}
+                  </td>
+                  <td
+                    class="border-2 text-[12px] px-2 py-1"
+                    style="line-height: 20px"
+                    @click="
+                      () => {
+                        selData = {
+                          name: 'shop',
+                          value: pd.shop,
+                        };
+                      }
+                    "
+                  >
+                    {{ pd?.shop }}
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -110,6 +123,11 @@
 import { ref, watch } from "vue";
 import { getQueryData } from "~/helpers/Utils";
 const cat = ref([]);
+const searchData = ref([]);
+const selData = ref({
+  name: "",
+  value: "",
+});
 const prod = ref([]);
 const category = ref([]);
 const shop = ref([]);
@@ -144,6 +162,11 @@ const handleClickOutside = (event) => {
   }
 };
 
+watch(selData, () => {
+  console.log("selData is ", selData.value);
+  getSearchData(selData.value.name, selData.value.value);
+});
+
 watch(search, () => {
   data.value = false;
   if (search.value?.length > 2) {
@@ -157,12 +180,13 @@ watch(selected, () => {
 
 const searchFunction = async () => {
   await productSearch();
-  await getCatData();
+  // await getCatData();
   emit("update", search.value);
 };
 
 const productSearch = async () => {
   data.value = false;
+  searchData.value = [];
   try {
     const queryData = {};
     if (selected.value > 0) queryData.category_ids = selected.value;
@@ -178,7 +202,6 @@ const productSearch = async () => {
       product.data = prod.value;
       product.count = res.data.products.count;
       product.query = search.value;
-      prodState.setProductData(prod.value);
 
       if (
         prod.value.length > 0 ||
@@ -187,17 +210,67 @@ const productSearch = async () => {
       ) {
         data.value = true;
       }
+    }
+  } catch (error) {
+    console.log("err", error);
+  }
+  getData();
+};
 
-      console.log(prod.value);
+const getSearchData = async (routeName, routeValue) => {
+  try {
+    if (routeName === "product") {
+      routeValue = routeValue.value;
+    }
+    const url = `/search/${routeName}/${routeValue}`;
+    if (search.value.length > 2) {
+      const res = await useCustomFetch({ url });
+      console.log("res data", res.data);
+      if (routeName === "product") {
+        product.data = res.data;
+        product.count = res.data.length;
+        product.query = routeValue;
+        navigateTo("/search");
+      }
+      if (routeName === "shop") {
+        store.data = res.data;
+        store.count = res.data.length;
+        store.query = routeValue;
+        if (res.data.length > 0) navigateTo(`/shops/${res.data[0].slug}`);
+      }
     }
   } catch (error) {
     console.log("err", error);
   }
 };
 
+const getData = () => {
+  const maxlength = Math.max(
+    category.value.length,
+    prod.value.length,
+    shop.value.length
+  );
+  const sData = [];
+  for (let index = 0; index < maxlength; index++) {
+    const dt = {
+      product:
+        prod.value.length > index
+          ? prod.value[index].translations[0]?.name
+          : null,
+      category:
+        category.value.length > index
+          ? category.value[index].translations[0]?.name
+          : null,
+      shop: shop.value.length > index ? shop.value[index].name : null,
+    };
+    sData.push(dt);
+  }
+  searchData.value = sData;
+};
+
 onMounted(async () => {
   search.value = store.queryData;
-  await getCatData();
+  // await getCatData();
   document.addEventListener("click", handleClickOutside);
 });
 
