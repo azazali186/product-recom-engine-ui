@@ -47,7 +47,6 @@ const props = defineProps(["data"]);
 const products = ref(props.data);
 const query = ref("");
 const count = ref(0);
-import store from "~/store";
 import ProductCardVue from "./ProductCard.vue";
 import product from "~/store/product";
 const prodState = useProductData();
@@ -81,16 +80,13 @@ const filters = [
 const selected = ref(filters[0].id);
 
 watch(query, () => {
-  query.value = store.queryData;
+  query.value = product.query;
 });
 
 onMounted(() => {
-  query.value = store.queryData;
+  query.value = product.query;
+  products.value = product.data;
   count.value = product.count || 0;
-  console.log("products ",products.value)
-  if(products?.value?.length <=0){
-    products.value = prodState?.getProductData();
-  }
 });
 
 const current = computed(() => filters.find((ct) => ct.id === selected.value));

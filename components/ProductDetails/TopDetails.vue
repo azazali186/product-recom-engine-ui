@@ -12,7 +12,7 @@
     <br />
 
     <div class="flex flex-col gap-5 items-center">
-      <div  v-for="variation in variations" class=" w-full">
+      <div v-for="variation in variations" class="w-full">
         <div class="flex flex-row gap-5 w-full">
           <span
             ><b>{{ variation.name }}:</b></span
@@ -31,7 +31,7 @@
     </div>
     <br />
 
-    <div>
+    <div v-if="seller">
       <b>Seller informations:</b>
       <div class="flex items-center gap-5">
         Shop Name:
@@ -40,27 +40,27 @@
         >
         <ULink :to="'/shops/' + seller.name" block
           ><UAvatar
-            src="https://avatars.githubusercontent.com/u/739984?v=4"
+            :src="seller.logo"
             :alt="seller.name"
             class="cursor-pointer"
         /></ULink>
       </div>
-      <div>
-        Seller Ratings: <b>{{ seller.ratings }}</b>
+      <div class="flex items-center gap-2">
+        Seller Ratings: <b class="text-[20px]">{{ seller.ratings }}</b> ⭐
       </div>
     </div>
     <br />
-    <h1 v-if="product?.keyPoints?.length > 0" class="text-xl font-bold">
+    <h1 v-if="getFeatures?.length > 0" class="text-xl font-bold">
       {{ selectedVariation ? getVariationName : getName }} Key Points
     </h1>
-    <ul v-if="product?.keyPoints?.length > 0">
-      <li class="font-bold" v-for="(keyword, index) in product?.keyPoints">
-        {{ index + 1 }}. {{ keyword }}
+    <ul v-if="getFeatures?.length > 0">
+      <li class="font-bold" v-for="(keyword, index) in getFeatures">
+        {{ index + 1 }}. {{ keyword.translations[0].name }}
       </li>
     </ul>
     <br />
-    <div class="flex gap-3 items-center">
-      <ULink :to="'/shops/' + seller.name" block
+    <div class="flex gap-3 items-center" v-if="seller">
+      <ULink :to="'/shops/' + seller.slug" block
         ><button
           class="w-[135px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
         >
@@ -97,9 +97,12 @@ import TelegramIcon from "../Icons/TelegramAnimated";
 import WhatsAppIcon from "../Icons/WhatsApp";
 import FacebookIcon from "../Icons/FacebookAnimated";
 import EmailIcon from "../Icons/EmailAnimated";
+import productStore from "~/store/product";
+import { convertVariationsArray } from "~/helpers/Utils";
 const props = defineProps(["sellerInfo"]);
 const seller = ref(props.sellerInfo);
 const selectedVariation = ref(null);
+const product = ref(productStore?.selectedProduct);
 
 const price = ref(0);
 const currency = ref(null);
@@ -108,9 +111,6 @@ const qty = ref();
 const selectVariation = (val) => {
   selectedVariation.value = val;
 };
-
-import productStore from "~/store/product";
-import { convertVariationsArray } from "~/helpers/Utils";
 
 watch(productStore, () => {
   console.log("product watch", productStore.selectedProduct);
@@ -138,15 +138,13 @@ watch(selectedVariation, () => {
 });
 
 const getVariationName = computed(() => {
-  console.log("getVariationName called");
   if (selectedVariation.value) {
     const matchingStock = productStore.selectedProduct.stocks.find((st) => {
+      console.log("st", st.sku.includes(selectedVariation.value));
       return (
-        st?.translations?.length > 0 &&
-        st.variation?.value === selectedVariation.value
+        st?.translations?.length > 0 && st.sku.includes(selectedVariation.value)
       );
     });
-
     if (matchingStock) {
       productStore.matchStock = matchingStock;
       productStore.selectedVariarion = selectedVariation;
@@ -165,6 +163,14 @@ const variations = computed(() => {
     const v = convertVariationsArray(productStore.selectedProduct.variations);
     console.log("variations are ", v);
     return v;
+  }
+  return null;
+});
+
+const getFeatures = computed(() => {
+  if (productStore?.selectedProduct?.features?.length > 0) {
+    const features = productStore?.selectedProduct?.features;
+    return features;
   }
   return null;
 });

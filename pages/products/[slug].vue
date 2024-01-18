@@ -56,15 +56,25 @@ import productStore from "~/store/product";
 // https://picsum.photos/720/1080?random=100.webp
 const route = useRoute();
 const productId = ref(route.params.slug);
+const seoData = ref({
+  title:"",
+  description:"",
+  keywords:[],
+  tags:[]
+})
 
 const sellerInfo = ref({
-  name: "TechEmpire",
-  ratings: 4.8,
-  contact: "support@techempire.com",
+  name: "AdminShop",
+  slug: "AdminShop",
+  ratings: 5,
+  logo: "https://avatars.githubusercontent.com/u/739984?v=4",
+  contact: "support@adminshop.com",
   fb: "https://fb.com",
   tg: "0965655136",
   wa: "0965655136",
 });
+
+
 
 const productData = ref({});
 const productTitle = ref("");
@@ -147,14 +157,25 @@ onMounted(async () => {
   store.isLoading = true;
   try {
     const res = await useCustomFetch({
-      url: `/search/${productId.value}`,
+      url: `/products/details/${productId.value}`,
     });
-    console.log("product details is ", res);
     productData.value = res.data;
     productStore.selectedProduct = productData.value;
+    if(productData.value.created_by){
+      const shop = productData.value.created_by?.shop;
+      sellerInfo.value = {
+        name : shop?.name,
+        slug: shop?.slug,
+        ratings: shop?.ratings || 0,
+        logo: shop?.logo?.url || "https://avatars.githubusercontent.com/u/739984?v=4",
+        contact: productData.value.created_by.mobile_number,
+        fb: shop?.fb || "https://fb.com",
+        tg: shop?.tg || productData.value.created_by.mobile_number,
+        wa: shop?.wa || productData.value.created_by.mobile_number,
+      }
+    }
     store.isLoading = false;
   } catch (error) {
-    console.log("err", error);
     store.isLoading = false;
   }
   store.isLoading = true;

@@ -92,7 +92,7 @@ onMounted(() => {
   }
 });
 
-const url = "/products/" + product?.value?.id;
+const url = "/products/" + product?.value?.slug;
 
 const images = product.value.images;
 
