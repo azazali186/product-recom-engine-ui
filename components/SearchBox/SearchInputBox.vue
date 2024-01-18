@@ -140,8 +140,6 @@ import product from "~/store/product";
 
 const catState = useCatData();
 
-const prodState = useProductData();
-
 const emit = defineEmits(["update"]);
 
 const search = ref("");
@@ -230,13 +228,17 @@ const getSearchData = async (routeName, routeValue) => {
         product.data = res.data;
         product.count = res.data.length;
         product.query = routeValue;
+        searchData.value = [];
         navigateTo("/search");
       }
       if (routeName === "shop") {
         store.data = res.data;
         store.count = res.data.length;
         store.query = routeValue;
-        if (res.data.length > 0) navigateTo(`/shops/${res.data[0].slug}`);
+        if (res.data.length > 0) {
+          searchData.value = [];
+          navigateTo(`/shops/${res.data[0].slug}`)
+        };
       }
     }
   } catch (error) {
@@ -269,25 +271,8 @@ const getData = () => {
 };
 
 onMounted(async () => {
-  search.value = store.queryData;
-  // await getCatData();
   document.addEventListener("click", handleClickOutside);
 });
-
-const getCatData = async () => {
-  try {
-    if (catState.getCatData()?.length > 0) {
-      cat.value = catState.getCatData();
-    } else {
-      const res = await useCustomFetch({ url: "/category/public" });
-      cat.value = res?.data?.list;
-      catState.setCatData(cat.value);
-    }
-  } catch (error) {
-    console.log("err", error);
-  }
-  product.catData = cat.value;
-};
 
 onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
