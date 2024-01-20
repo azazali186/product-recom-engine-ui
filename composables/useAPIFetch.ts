@@ -1,5 +1,5 @@
-﻿import axios from 'axios';
-import auth from '../store/auth';
+﻿import axios from "axios";
+import auth from "../store/auth";
 
 export const useCustomFetch = async (request: any) => {
   const config = useRuntimeConfig();
@@ -7,20 +7,23 @@ export const useCustomFetch = async (request: any) => {
   let er: any = null;
 
   try {
-    const token = localStorage.getItem('search-engin-login-token') || auth.state.token;
+    const token =
+      localStorage.getItem("search-engin-login-token") || auth.state.token;
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-    const response = await axios({
-      method: request.method || 'get',
-      url: request.url,
-      baseURL: config.public.baseURL,
-      headers,
-      data: request?.body || {},
-      ...request, // Additional request configuration
-    });
+    if (request.url) {
+      const response = await axios({
+        method: request.method || "get",
+        url: request.url,
+        baseURL: config.public.baseURL,
+        headers,
+        data: request?.body || {},
+        ...request, // Additional request configuration
+      });
 
-    // Assuming the structure of your response object
-    res = response.data;
+      // Assuming the structure of your response object
+      res = response.data;
+    }
   } catch (error) {
     er = error;
   }

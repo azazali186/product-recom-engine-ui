@@ -40,8 +40,6 @@ const data = ref([]);
 
 const prodState = useProductData();
 
-console.log("store searchBox ", store);
-
 onMounted(() => {
   data.value = prodState.getProductData();
 });

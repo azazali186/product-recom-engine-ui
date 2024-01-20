@@ -47,8 +47,6 @@ const show = currentRoute === "/" ? false : true;
 const data = ref([]);
 import store from "~/store/index";
 
-console.log("store header ", store);
-
 const query = ref("");
 
 const prodState = useProductData();
