@@ -1,16 +1,21 @@
 <template>
   <div>
-    <div class="w-[415px] h-[600px] mt-10 shadow-gray-400 overflow-hidden cursor-pointer shadow-lg m-5 p-5 flex flex-col
-       justify-around hover:shadow-md hover:shadow-blue-600 transition-shadow ease-in-out">
-      <Swiper :modules="[
-        SwiperAutoplay,
-        SwiperEffectCreative,
-        Navigation,
-        Pagination,
-        Scrollbar,
-        A11y,
-      ]" 
-      :slides-per-view="1" :loop="true" :effect="'creative'" :creative-effect="{
+    <div
+      class="w-[415px] h-[600px] mt-10 shadow-gray-400 overflow-hidden cursor-pointer shadow-lg m-5 p-5 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600 transition-shadow ease-in-out"
+    >
+      <Swiper
+        :modules="[
+          SwiperAutoplay,
+          SwiperEffectCreative,
+          Navigation,
+          Pagination,
+          Scrollbar,
+          A11y,
+        ]"
+        :slides-per-view="1"
+        :loop="true"
+        :effect="'creative'"
+        :creative-effect="{
           prev: {
             shadow: false,
             translate: ['-20%', 0, -1],
@@ -18,16 +23,25 @@
           next: {
             translate: ['100%', 0, 0],
           },
-        }" navigation :pagination="{
+        }"
+        navigation
+        :pagination="{
           clickable: true,
           el: '.swiper-pagination',
           type: 'bullets',
-        }" :scrollbar="{ draggable: true }" :autoplay="{
+        }"
+        :scrollbar="{ draggable: true }"
+        :autoplay="{
           delay: val,
           disableOnInteraction: false,
-        }">
-        <SwiperSlide v-for="slide in images" :key="slide">
-          <img :src="slide.url" class="object-contain h-[100%] w-100[%]" :alt="title" />
+        }"
+      >
+        <SwiperSlide v-for="slide in getImages" :key="slide">
+          <img
+            :src="slide.url"
+            class="object-contain h-[100%] w-100[%]"
+            :alt="title"
+          />
         </SwiperSlide>
       </Swiper>
     </div>
@@ -37,7 +51,17 @@
 <script setup>
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 const props = defineProps(["data", "title"]);
-const images = ref(props.data);
+import productStore from "~/store/product";
+const product = ref(productStore?.selectedProduct);
 const title = ref(props.title);
+console.log("Images ", product.value);
+watch(productStore, () => {
+  console.log("Images watch", productStore.selectedProduct);
+});
+
+const getImages = computed(() => {
+  return productStore.selectedProduct.images;
+});
+
 var val = Math.floor(1000 + Math.random() * 10000);
 </script>
