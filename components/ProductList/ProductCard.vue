@@ -81,6 +81,9 @@ const priceSymbol = ref("$");
 const productName = ref("");
 
 onMounted(() => {
+  if (product?.value?.price?.length > 0) {
+    productPrice.value = product?.value.price[0].price;
+  }
   if (product?.value?.stocks?.length > 0) {
     productPrice.value = product?.value.stocks[0].price[0].price;
   }
@@ -90,6 +93,7 @@ onMounted(() => {
   if (product?.value?.translations?.length > 0) {
     productName.value = product.value.translations[0].name;
   }
+
 });
 
 const url = "/products/" + product?.value?.slug;

@@ -59,8 +59,8 @@
       </li>
     </ul>
     <br />
-    <div class="flex gap-3 items-center" v-if="seller">
-      <ULink :to="'/shops/' + seller.slug" block
+    <div class="flex gap-3 items-center" v-if="getShopInfo">
+      <ULink :to="'/shops/' + getShopInfo.slug" block
         ><button
           class="w-[135px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
         >
@@ -74,19 +74,19 @@
 
       <TelegramIcon
         class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg"
-        :mobile="seller.tg"
+        :mobile="getShopInfo.tg"
       />
       <WhatsAppIcon
         class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-green-400 shadow-lg"
-        :mobile="seller.wa"
+        :mobile="getShopInfo.wa"
       />
       <FacebookIcon
         class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-blue-600 shadow-lg"
-        :link="seller.fb"
+        :link="getShopInfo.fb"
       />
       <EmailIcon
         class="text-[24px] hover:scale-150 transition-shadow ease-in-out rounded-full hover:shadow-red-400 shadow-lg cursor-pointer"
-        :email="seller.contact"
+        :email="getShopInfo.contact"
       />
     </div>
   </div>
@@ -125,6 +125,10 @@ const getName = computed(() => {
       price.value = productStore.selectedProduct.stocks[0].price[0]?.price;
       currency.value =
         productStore.selectedProduct.stocks[0].price[0]?.currency?.symbol;
+    }else{
+      price.value = productStore.selectedProduct.price[0]?.price;
+      currency.value =
+        productStore.selectedProduct.price[0]?.currency?.symbol;
     }
     qty.value = productStore.selectedProduct.quantity;
     return productStore.selectedProduct.translations[0].name;
@@ -136,6 +140,23 @@ watch(selectedVariation, () => {
   console.log("Selected valriations ", selectedVariation.value);
   console.log(getVariationName);
 });
+
+const getShopInfo = computed(()=>{
+  const contact = productStore.selectedProduct?.created_by?.mobile_number || '0965655136';
+  const shop = productStore.selectedProduct?.created_by?.shop;
+      const info = {
+        name : shop?.name || 'AdminShop',
+        slug: shop?.slug || 'AdminShop',
+        ratings: shop?.ratings || 0,
+        logo: shop?.logo?.url || "https://avatars.githubusercontent.com/u/739984?v=4",
+        contact: contact,
+        fb: shop?.fb || "https://fb.com",
+        tg: shop?.tg || contact,
+        wa: shop?.wa || contact,
+      }
+      console.log("shopinfo is ", info);
+      return info
+})
 
 const getVariationName = computed(() => {
   if (selectedVariation.value) {

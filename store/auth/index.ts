@@ -36,7 +36,7 @@ async function checkAuth() {
       authorization: "Bearer " + token,
     };
     const response = await useCustomFetch({
-      url: "/auth/user",
+      url: "/users/user",
       method: "GET",
     });
     console.log("res", response);

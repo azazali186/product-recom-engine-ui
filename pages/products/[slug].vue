@@ -24,7 +24,10 @@
           <ProductCardVue v-for="product in products" :data="product" />
         </div>
       </div> -->
-      <ProductDetailsWriteReview />
+
+
+
+      <!-- <ProductDetailsWriteReview />
       <div class="flex flex-col gap-5 pb-10 pt-5">
         <div class="text-center text-2xl font-bold">
           Customers Feedback: From 1 to 10
@@ -32,7 +35,10 @@
         <div class="py-3" v-for="i in 10">
           <ProductDetailsFeedbacks />
         </div>
-      </div>
+      </div> -->
+
+
+
       <!-- <div class="flex flex-col">
         <div class="text-2xl font-bold text-center mt-10">
           Relavent Products:
@@ -174,12 +180,17 @@ onMounted(async () => {
         wa: shop?.wa || productData.value.created_by.mobile_number,
       }
     }
+
+    console.log("shop info is onMounted ",sellerInfo.value)
     store.isLoading = false;
   } catch (error) {
     store.isLoading = false;
   }
   store.isLoading = true;
 });
+
+console.log("shop info is ",sellerInfo.value)
+
 
 useHead({
   title: `${product.value.title}`,
