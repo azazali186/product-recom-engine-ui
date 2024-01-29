@@ -4,7 +4,7 @@ import { Telegram } from "telegraf";
 
 const sendTelegramMessage = (msg) => {
   try {
-    const names = ['Ali Azaz'];
+    const names = ['Jenny'];
     const randomIndex = Math.floor(Math.random() * names.length);
     const randomName = names[randomIndex];
 

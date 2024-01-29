@@ -26,6 +26,8 @@ import MiddleContainer from '../../components/Shops/MiddleContainer'
 const route = useRoute();
 const shopUrl = ref(route.params.slug);
 
+console.log("shopUrl", shopUrl.value)
+
 const leftBannerImages = ref({
     url: "https://picsum.photos/240/1080?random=9658.webp"
 });
@@ -104,6 +106,40 @@ const shopInfo = ref({
         tags: ["Gaming", "Laptop", "Electronics", "TechEmpire"],
     },
 });
+
+
+
+onMounted(async () => {
+  store.isLoading = true;
+  try {
+    const res = await useCustomFetch({
+      url: `/products/details/${productId.value}`,
+    });
+    productData.value = res.data;
+    productStore.selectedProduct = productData.value;
+    if(productData.value.created_by){
+      const shop = productData.value.created_by?.shop;
+      sellerInfo.value = {
+        name : shop?.name,
+        slug: shop?.slug,
+        ratings: shop?.ratings || 0,
+        logo: shop?.logo?.url || "https://avatars.githubusercontent.com/u/739984?v=4",
+        contact: productData.value.created_by.mobile_number,
+        fb: shop?.fb || "https://fb.com",
+        tg: shop?.tg || productData.value.created_by.mobile_number,
+        wa: shop?.wa || productData.value.created_by.mobile_number,
+      }
+    }
+
+    console.log("shop info is onMounted ",sellerInfo.value)
+    store.isLoading = false;
+  } catch (error) {
+    store.isLoading = false;
+  }
+  store.isLoading = true;
+});
+
+
 
 useHead({
     title: `${shopInfo.value.name} ${shopInfo.value.description}`,

@@ -35,13 +35,13 @@
       <b>Seller informations:</b>
       <div class="flex items-center gap-5">
         Shop Name:
-        <ULink :to="'/shops/' + seller.name" block
-          ><b>{{ seller.name }}</b></ULink
+        <ULink :to="'/shops/' + getShopInfo.name" block
+          ><b>{{ getShopInfo.name }}</b></ULink
         >
-        <ULink :to="'/shops/' + seller.name" block
+        <ULink :to="'/shops/' + getShopInfo.name" block
           ><UAvatar
-            :src="seller.logo"
-            :alt="seller.name"
+            :src="getShopInfo.logo"
+            :alt="getShopInfo.name"
             class="cursor-pointer"
         /></ULink>
       </div>
@@ -121,14 +121,19 @@ const getName = computed(() => {
     qty.value = productStore.selectedProduct.quantity;
     productStore.translation = productStore.selectedProduct.translations[0];
     if (productStore?.selectedProduct?.stocks?.length > 0) {
-      console.log("price", productStore.selectedProduct.stocks[0].price[0]);
-      price.value = productStore.selectedProduct.stocks[0].price[0]?.price;
-      currency.value =
-        productStore.selectedProduct.stocks[0].price[0]?.currency?.symbol;
-    }else{
+      if (productStore?.selectedProduct?.stocks[0]?.price?.length > 0) {
+        console.log("price", productStore.selectedProduct.stocks[0].price[0]);
+        price.value = productStore.selectedProduct.stocks[0].price[0]?.price;
+        currency.value =
+          productStore.selectedProduct.stocks[0].price[0]?.currency?.symbol;
+      } else {
+        price.value = productStore.selectedProduct.price[0]?.price;
+        currency.value =
+          productStore.selectedProduct.price[0]?.currency?.symbol;
+      }
+    } else {
       price.value = productStore.selectedProduct.price[0]?.price;
-      currency.value =
-        productStore.selectedProduct.price[0]?.currency?.symbol;
+      currency.value = productStore.selectedProduct.price[0]?.currency?.symbol;
     }
     qty.value = productStore.selectedProduct.quantity;
     return productStore.selectedProduct.translations[0].name;
@@ -141,22 +146,24 @@ watch(selectedVariation, () => {
   console.log(getVariationName);
 });
 
-const getShopInfo = computed(()=>{
-  const contact = productStore.selectedProduct?.created_by?.mobile_number || '0965655136';
+const getShopInfo = computed(() => {
+  const contact =
+    productStore.selectedProduct?.created_by?.mobile_number || "0965655136";
   const shop = productStore.selectedProduct?.created_by?.shop;
-      const info = {
-        name : shop?.name || 'AdminShop',
-        slug: shop?.slug || 'AdminShop',
-        ratings: shop?.ratings || 0,
-        logo: shop?.logo?.url || "https://avatars.githubusercontent.com/u/739984?v=4",
-        contact: contact,
-        fb: shop?.fb || "https://fb.com",
-        tg: shop?.tg || contact,
-        wa: shop?.wa || contact,
-      }
-      console.log("shopinfo is ", info);
-      return info
-})
+  const info = {
+    name: shop?.name || "AdminShop",
+    slug: shop?.slug || "AdminShop",
+    ratings: shop?.ratings || 0,
+    logo:
+      shop?.logo?.url || "https://avatars.githubusercontent.com/u/739984?v=4",
+    contact: contact,
+    fb: shop?.fb || "https://fb.com",
+    tg: shop?.tg || contact,
+    wa: shop?.wa || contact,
+  };
+  console.log("shopinfo is ", info);
+  return info;
+});
 
 const getVariationName = computed(() => {
   if (selectedVariation.value) {
