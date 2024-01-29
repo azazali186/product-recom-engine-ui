@@ -35,10 +35,10 @@
       <b>Seller informations:</b>
       <div class="flex items-center gap-5">
         Shop Name:
-        <ULink :to="'/shops/' + getShopInfo.name" block
+        <ULink :to="'/shops/' + getShopInfo.slug" block
           ><b>{{ getShopInfo.name }}</b></ULink
         >
-        <ULink :to="'/shops/' + getShopInfo.name" block
+        <ULink :to="'/shops/' + getShopInfo.slug" block
           ><UAvatar
             :src="getShopInfo.logo"
             :alt="getShopInfo.name"
