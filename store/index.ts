@@ -12,4 +12,5 @@ export default reactive({
   data: [],
   count: 0,
   query: "",
+  shop: {}
 });

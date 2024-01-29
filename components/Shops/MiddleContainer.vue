@@ -18,7 +18,7 @@
     <UModal
       v-model="isOpen"
       :ui="{
-        base:'min-w-[1200px]',
+        base: 'min-w-[1200px]',
         rounded: 'rounded-lg',
       }"
     >
@@ -27,7 +27,10 @@
     <div class="absolute right-0 top-[50%]">
       <div
         class="cursor-pointer rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400 bg-green-400"
-        :style="{ borderColor: theme.theme.avtarRingColor, background: theme.theme.avtarRingColor }"
+        :style="{
+          borderColor: theme.theme.avtarRingColor,
+          background: theme.theme.avtarRingColor,
+        }"
         @click="isOpen = true"
       >
         <IconsSettings />
@@ -43,33 +46,38 @@
           class="text-2xl flex flex-col items-center gap-2 font-bold pt-60 pr-10 underline"
           :style="{ color: theme.theme.snColor }"
         >
-          {{ data.name }}
+          {{ getShopInfo.name }}
           <div class="flex gap-5">
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]"
+              :style="{ borderColor: theme.theme.avtarRingColor }"
               ><IconsFacebookAnimated
             /></span>
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
-              ><IconsTelegramAnimated
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]"
+              :style="{ borderColor: theme.theme.avtarRingColor }"
+              ><IconsTelegramAnimated :mobile="getShopInfo.tg"
             /></span>
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
-              ><IconsWhatsApp
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]"
+              :style="{ borderColor: theme.theme.avtarRingColor }"
+              ><IconsWhatsApp :mobile="getShopInfo.wa"
             /></span>
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
-              ><IconsEmailAnimatedWithoutEmail
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]"
+              :style="{ borderColor: theme.theme.avtarRingColor }"
+              ><IconsEmailAnimated :email="getShopInfo.email"
             /></span>
             <span
-              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]" :style="{ borderColor: theme.theme.avtarRingColor }"
+              class="rounded-full flex justify-center items-center border-2 h-[50px] w-[50px]"
+              :style="{ borderColor: theme.theme.avtarRingColor }"
               ><IconsTelephone
             /></span>
           </div>
         </div>
         <div class="w-[320px] h-[320px] pt-[70px] mr-[100px]">
           <img
-            :src="avtar.url"
+            :src="getShopInfo?.logo"
             class="right-0 object-cover w-[320px] h-[320px] items-center justify-center rounded-full border-[10px]"
             :style="{ borderColor: theme.theme.avtarRingColor }"
             alt=""
@@ -202,19 +210,44 @@ const props = defineProps(["shopInfo", "banner"]);
 const data = ref(props.shopInfo);
 const isOpen = ref(false);
 import theme from "~/store/theme";
+import store from "~/store";
 
-const banner = ref({
-  url: "https://picsum.photos/2160/360?random=3652.webp",
-});
+const banner = ref(props.banner);
 
 watch(theme, () => {
   console.log("theme change ");
 });
 
-const avtar = ref({
-  url: "https://picsum.photos/2160/360?random=1234566.webp",
-});
+const avtar = ref(props.shopInfo.logo);
 const bannerStyle = `background-image: url(${banner.value.url}); z-index: -3`;
+
+console.log("shopInfo data ", data.value);
+
+const getShopInfo = computed(() => {
+  const contact = store.shop?.vendor?.mobile_number || "0965655136";
+  const email = store.shop?.vendor?.email || "shop@example.com";
+  const shop = store.shop;
+  const info = {
+    name: shop?.name || "AdminShop",
+    slug: shop?.slug || "AdminShop",
+    ratings: shop?.ratings || 0,
+    logo: getLogoUrl(shop?.logo?.url),
+    contact: contact,
+    fb: shop?.fb || "https://fb.com",
+    tg: shop?.tg || contact,
+    wa: shop?.wa || contact,
+    email: shop?.email || email,
+  };
+  console.log("shopinfo is ", info);
+  return info;
+});
+
+const getLogoUrl = (url) => {
+  if (url) {
+    return "http://localhost:4500/" + url;
+  }
+  return "https://avatars.githubusercontent.com/u/739984?v=4";
+};
 
 const products = [
   {
