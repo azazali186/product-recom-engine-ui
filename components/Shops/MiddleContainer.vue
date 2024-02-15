@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div
     class="shop-mid-centainer w-full flex-col flex overflow-y-scroll hide-scrollbar"
     :style="{ background: bgColor }"
@@ -86,7 +86,7 @@
       </div>
     </div>
     <div class="mt-28">
-      <div class="prod-container mx-auto my-8">
+      <!-- <div class="prod-container mx-auto my-8">
         <h1
           class="text-4xl font-bold mb-4"
           :style="{ color: theme.theme.hdColor }"
@@ -105,10 +105,10 @@
               class="product-image"
             />
             <h2 class="product-name">Catalogue {{ index }}</h2>
-            <!-- <p class="product-price">${{ product.price.toFixed(2) }}</p> -->
+            <p class="product-price">${{ product.price.toFixed(2) }}</p>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="prod-container mx-auto my-8">
         <h1
           class="text-4xl font-bold mb-4"
@@ -243,10 +243,20 @@ const getShopInfo = computed(() => {
 });
 
 const getLogoUrl = (url) => {
+  getPopularProducts();
   if (url) {
     return "http://localhost:4500/" + url;
   }
   return "https://avatars.githubusercontent.com/u/739984?v=4";
+};
+
+const getPopularProducts = async () => {
+  let url = "/products/public/landing-page/shop/" + getShopInfo?.value.slug;
+  if (getShopInfo?.value.slug === "AdminShop") {
+    url = "/products/public/landing-page";
+  }
+  const res = await useCustomFetch({ url });
+  console.log("getPopularProducts ", res);
 };
 
 const products = [
