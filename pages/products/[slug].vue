@@ -54,7 +54,7 @@
 <script setup>
 import { onMounted } from "vue";
 
-import ImageSlider from "@/components/ProductDetails/imageSlider";
+import ImageSlider from "@/components/ProductDetails/ImageSlider";
 import TopDetails from "@/components/ProductDetails/TopDetails";
 import store from "~/store";
 import productStore from "~/store/product";
