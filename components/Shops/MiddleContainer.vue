@@ -245,7 +245,7 @@ const getShopInfo = computed(() => {
 const getLogoUrl = (url) => {
   getPopularProducts();
   if (url) {
-    return "http://localhost:4500/" + url;
+    return "https://api.go-kh.com/" + url;
   }
   return "https://avatars.githubusercontent.com/u/739984?v=4";
 };
