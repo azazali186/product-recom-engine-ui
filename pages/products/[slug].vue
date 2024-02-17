@@ -54,9 +54,8 @@
 <script setup>
 import { onMounted } from "vue";
 
-import ImageSlider from "../../components/ProductDetails/imageSlider";
-import TopDetails from "../../components/ProductDetails/TopDetails";
-import ProductCardVue from "../../components/ProductList/ProductCard";
+import ImageSlider from "@/components/ProductDetails/imageSlider";
+import TopDetails from "@/components/ProductDetails/TopDetails";
 import store from "~/store";
 import productStore from "~/store/product";
 // https://picsum.photos/720/1080?random=100.webp
