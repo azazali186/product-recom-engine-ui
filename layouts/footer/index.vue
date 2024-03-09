@@ -6,6 +6,7 @@
         <ULink to="/about-us"><span class="footer-content font-bold">About</span></ULink>
         <ULink to="/login"><span class="footer-content font-bold">Login</span></ULink>
         <ULink to="https://admin.go-kh.com"><span class="footer-content font-bold">Login Seller</span></ULink>
+        <ULink to="/seller/register"><span class="footer-content font-bold">Register Seller</span></ULink>
         <span class="footer-content c1 font-bold">How Search Works</span>
       </div>
       <div class="footer-right-menu mr-10">

@@ -74,6 +74,7 @@
       </div>
       <div class="flex justify-center items-center">
         <button
+          @click="submitRegister"
           class="w-[100px] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
         >
           <span
@@ -103,4 +104,32 @@ const mobileNumber = ref();
 const shopName = ref();
 const slug = ref();
 const show = ref(true);
+
+const submitRegister = async () => {
+  try {
+    const res = await useCustomFetch({
+      url: "/auth/vendor/register",
+      method: "POST",
+      body: {
+        email: email.value,
+        name: shopName.value,
+        slug: slug.value,
+        username: email.value,
+        password: password.value,
+        mobileNumber: mobileNumber.value,
+      },
+    });
+    const result = res.data;
+    if (result?.token) {
+      localStorage.setItem("search-engin-login-token", result.token);
+    }
+    if (result?.user) {
+      localStorage.setItem(
+        "search-engin-login-user",
+        JSON.stringify(result.user)
+      );
+    }
+    navigateTo("/dashboard");
+  } catch (error) {}
+};
 </script>
