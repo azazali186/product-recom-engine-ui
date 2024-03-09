@@ -35,6 +35,6 @@
 
 <script setup>
 definePageMeta({
-  layout: false,
+  layout: true,
 });
 </script>

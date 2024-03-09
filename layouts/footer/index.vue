@@ -11,7 +11,7 @@
       <div class="footer-right-menu mr-10">
         <ULink to="/privacy" class="footer-content font-bold">Privacy</ULink>
         <ULink to="/about-us"  class="footer-content font-bold">About us</ULink>
-        <span class="footer-content font-bold">Terms</span>
+        <ULink to="/terms-conditions" class="footer-content font-bold">Terms</ULink>
       </div>
     </div>
   </div>
