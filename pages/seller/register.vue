@@ -19,7 +19,7 @@
             </template> </UInput
         ></span>
       </div>
-      <div class="flex gap-5 w-[100%] justify-center items-center">
+      <!-- <div class="flex gap-5 w-[100%] justify-center items-center">
         <span class="login-input-lable">Shop Url: </span>
         <span class="login-input-box"
           ><UInput v-model="slug" autocomplete="off" placeholder="ecom-empire">
@@ -27,7 +27,7 @@
               <IconsDesktop />
             </template> </UInput
         ></span>
-      </div>
+      </div> -->
       <div class="flex gap-5 w-[100%] justify-center items-center">
         <span class="login-input-lable">Telephone: </span>
         <span class="login-input-box"
@@ -113,7 +113,7 @@ const submitRegister = async () => {
       body: {
         email: email.value,
         name: shopName.value,
-        slug: slug.value,
+        slug: shopName.value.toLowerCase().replaceAll(" ","-"),
         username: email.value,
         password: password.value,
         mobileNumber: mobileNumber.value,
