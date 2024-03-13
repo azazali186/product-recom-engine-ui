@@ -129,7 +129,7 @@ const submitRegister = async () => {
         JSON.stringify(result.user)
       );
     }
-    navigateTo("/dashboard");
+    window.location.href = 'https://admin.go-kh.com';
   } catch (error) {}
 };
 </script>
