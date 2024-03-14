@@ -27,6 +27,12 @@
             class="search-engine-input-box mw-full"
             placeholder="Search your needed products..."
             ref="searchInput"
+            @keyup.enter="() => {
+                        selData = {
+                          name: 'product',
+                          value: searchInput,
+                        };
+                      }"
           />
         </div>
       </div>

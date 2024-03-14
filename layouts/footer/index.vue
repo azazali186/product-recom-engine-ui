@@ -4,7 +4,7 @@
     <div class="footer-links py-2">
       <div class="footer-left-menu ml-10">
         <ULink to="/about-us"><span class="footer-content font-bold">About</span></ULink>
-        <ULink to="/login"><span class="footer-content font-bold">Login</span></ULink>
+        <!-- <ULink to="/login"><span class="footer-content font-bold">Login</span></ULink> -->
         <ULink to="https://admin.go-kh.com"><span class="footer-content font-bold">Login Seller</span></ULink>
         <ULink to="/seller/register"><span class="footer-content font-bold">Register Seller</span></ULink>
         <span class="footer-content c1 font-bold">How Search Works</span>
