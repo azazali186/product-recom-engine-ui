@@ -57,24 +57,24 @@
             class="flex w-full px-5 pb-5"
             style="justify-content: space-between"
           >
-            <table class="w-full border-2">
-              <thead class="border-2">
+            <table class="w-full border-none">
+              <thead class="border-none">
                 <tr>
-                  <th class="border-2 w-[40%] font-bold text-[14px]">
+                  <th class="border-none w-[40%] font-bold text-[14px]">
                     Product Name
                   </th>
-                  <th class="border-2 w-[30%] font-bold text-[14px]">
+                  <th class="border-none w-[30%] font-bold text-[14px]">
                     Category Name
                   </th>
-                  <th class="border-2 w-[30%] font-bold text-[14px]">
+                  <th class="border-none w-[30%] font-bold text-[14px]">
                     Shop Name
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="border-2" v-for="pd in searchData">
+                <tr class="border-none" v-for="pd in searchData">
                   <td
-                    class="border-2 text-[12px] px-2 py-1"
+                    class="border-none text-[12px] px-2 py-1"
                     style="line-height: 20px"
                     @click="
                       () => {
@@ -88,7 +88,7 @@
                     {{ pd.product }}
                   </td>
                   <td
-                    class="border-2 text-[12px] px-2 py-1"
+                    class="border-none text-[12px] px-2 py-1"
                     style="line-height: 20px"
                     @click="
                       () => {
@@ -102,7 +102,7 @@
                     {{ pd.category }}
                   </td>
                   <td
-                    class="border-2 text-[12px] px-2 py-1"
+                    class="border-none text-[12px] px-2 py-1"
                     style="line-height: 20px"
                     @click="
                       () => {
@@ -173,9 +173,9 @@ watch(selData, () => {
 
 watch(search, () => {
   data.value = false;
-  if (search.value?.length > 2) {
+  // if (search.value?.length > 2) {
     searchFunction();
-  }
+  // }
 });
 
 watch(selected, () => {
@@ -225,7 +225,7 @@ const getSearchData = async (routeName, routeValue) => {
       routeValue = routeValue.value;
     }
     const url = `/search/${routeName}/${routeValue}`;
-    if (search.value.length > 2) {
+    // if (search.value.length > 2) {
       const res = await useCustomFetch({ url });
       console.log("res data", res.data);
       if (routeName === "product") {
@@ -244,7 +244,7 @@ const getSearchData = async (routeName, routeValue) => {
           navigateTo(`/shops/${res.data[0].slug}`)
         };
       }
-    }
+    // }
   } catch (error) {
     console.log("err", error);
   }

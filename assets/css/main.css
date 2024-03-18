@@ -4,6 +4,10 @@
 @import "@egjs/flicking-plugins/dist/arrow.css";
 @import "@egjs/flicking-plugins/dist/pagination.css";
 
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 * {
   font-family: "Roboto", sans-serif;
   padding: 0;

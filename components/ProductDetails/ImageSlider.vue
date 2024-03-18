@@ -31,15 +31,11 @@
           type: 'bullets',
         }"
         :scrollbar="{ draggable: true }"
-        :autoplay="{
-          delay: val,
-          disableOnInteraction: false,
-        }"
       >
         <SwiperSlide v-for="slide in getImages" :key="slide">
           <img
             :src="slide.url"
-            class="object-contain h-[100%] w-100[%]"
+            class="object-contain h-[100%] w-[100%]"
             :alt="title"
           />
         </SwiperSlide>

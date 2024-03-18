@@ -16,7 +16,6 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "nuxt-icon",
     "@nuxtjs/tailwindcss",
-    "nuxt-swiper",
   ],
   devtools: {
     enabled: true,
