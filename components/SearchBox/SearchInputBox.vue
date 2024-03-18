@@ -41,15 +41,15 @@
       style="width: 100%; justify-content: center; display: flex"
       v-if="data"
     >
-      <div
+      <!-- <div
         :class="
           input
-            ? 'bg-gradient-to-br from-green-400 to-blue-600' + clas
+            ? 'bg-gray-300' + clas
             : 'bg-gray-300' + clas
         "
-      >
+      > -->
         <div
-          class="search-engine-search bg-white"
+          class="search-engine-search bg-white shadow-sm shadow-gray-200"
           style="flex-direction: column"
         >
           <h1 class="font-bold capitalize text-[24px]">search Suggestions:</h1>
@@ -119,7 +119,7 @@
               </tbody>
             </table>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
