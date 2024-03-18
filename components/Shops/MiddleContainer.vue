@@ -1,4 +1,4 @@
-  <template>
+<template>
   <div
     class="shop-mid-centainer w-full flex-col flex overflow-y-scroll hide-scrollbar"
     :style="{ background: bgColor }"
@@ -114,10 +114,10 @@
           class="text-4xl font-bold mb-4"
           :style="{ color: theme.theme.hdColor }"
         >
-          Top Selling products
+          Top Visited products
         </h1>
         <div class="product-container hide-scrollbar">
-          <div
+          <!-- <div
             v-for="(product, index) in products"
             :key="index"
             class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
@@ -129,10 +129,45 @@
             />
             <h2 class="product-name">{{ product.name }}</h2>
             <p class="product-price">${{ product.price.toFixed(2) }}</p>
-          </div>
+          </div> -->
+          <ProductCard
+            v-if="visited?.length > 0"
+            v-for="product in visited"
+            :data="product"
+          />
+          <div v-else> No Top Visited products available now.</div>
         </div>
       </div>
       <div class="prod-container mx-auto my-8">
+        <h1
+          class="text-4xl font-bold mb-4"
+          :style="{ color: theme.theme.hdColor }"
+        >
+          Top Selling products
+        </h1>
+        <div class="product-container hide-scrollbar">
+          <!-- <div
+            v-for="(product, index) in products"
+            :key="index"
+            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
+          >
+            <img
+              :src="product.image"
+              :alt="product.name"
+              class="product-image"
+            />
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-price">${{ product.price.toFixed(2) }}</p>
+          </div> -->
+          <ProductCard
+            v-if="orders?.length > 0"
+            v-for="product in orders"
+            :data="product"
+          />
+          <div v-else> No Top Selling products available now.</div>
+        </div>
+      </div>
+      <!-- <div class="prod-container mx-auto my-8">
         <h1
           class="text-4xl font-bold mb-4"
           :style="{ color: theme.theme.hdColor }"
@@ -151,19 +186,18 @@
               class="product-image"
             />
             <h2 class="product-name">Catagory {{ index }}</h2>
-            <!-- <p class="product-price">${{ product.price.toFixed(2) }}</p> -->
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="prod-container mx-auto my-8">
         <h1
           class="text-4xl font-bold mb-4"
           :style="{ color: theme.theme.hdColor }"
         >
-          Most Popullar products
+          Recommended products
         </h1>
         <div class="product-container hide-scrollbar">
-          <div
+          <!-- <div
             v-for="(product, index) in products"
             :key="index"
             class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
@@ -175,7 +209,42 @@
             />
             <h2 class="product-name">{{ product.name }}</h2>
             <p class="product-price">${{ product.price.toFixed(2) }}</p>
-          </div>
+          </div> -->
+          <ProductCard
+            v-if="recom?.length > 0"
+            v-for="product in recom"
+            :data="product"
+          />
+          <div v-else> No recommended products available now.</div>
+        </div>
+      </div>
+      <div class="prod-container mx-auto my-8">
+        <h1
+          class="text-4xl font-bold mb-4"
+          :style="{ color: theme.theme.hdColor }"
+        >
+          Most Popular products
+        </h1>
+        <div class="product-container hide-scrollbar">
+          <!-- <div
+            v-for="(product, index) in products"
+            :key="index"
+            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
+          >
+            <img
+              :src="product.image"
+              :alt="product.name"
+              class="product-image"
+            />
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-price">${{ product.price.toFixed(2) }}</p>
+          </div> -->
+          <ProductCard
+            v-if="popular?.length > 0"
+            v-for="product in popular"
+            :data="product"
+          />
+          <div v-else> No Most Popular products available now.</div>
         </div>
       </div>
       <div class="prod-container mx-auto my-8">
@@ -186,7 +255,7 @@
           Most Liked products
         </h1>
         <div class="product-container hide-scrollbar">
-          <div
+          <!-- <div
             v-for="(product, index) in products"
             :key="index"
             class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
@@ -198,7 +267,13 @@
             />
             <h2 class="product-name">{{ product.name }}</h2>
             <p class="product-price">${{ product.price.toFixed(2) }}</p>
-          </div>
+          </div> -->
+          <ProductCard
+            v-if="wish?.length > 0"
+            v-for="product in wish"
+            :data="product"
+          />
+          <div v-else> No Most Liked products available now.</div>
         </div>
       </div>
     </div>
@@ -212,7 +287,16 @@ const isOpen = ref(false);
 import theme from "~/store/theme";
 import store from "~/store";
 
+import ProductCard from "../ProductList/ProductCard.vue";
+
 const banner = ref(props.banner);
+
+const products = ref([]);
+const orders = ref([]);
+const popular = ref([]);
+const recom = ref([]);
+const visited = ref([]);
+const wish = ref([]);
 
 watch(theme, () => {
   console.log("theme change ");
@@ -257,9 +341,15 @@ const getPopularProducts = async () => {
   }
   const res = await useCustomFetch({ url });
   console.log("getPopularProducts ", res);
+  products.value = res.data.visited;
+  popular.value = res.data.popular;
+  orders.value = res.data.orders;
+  recom.value = res.data.recom;
+  visited.value = res.data.visited;
+  wish.value = res.data.wish;
 };
 
-const products = [
+/* const products = [
   {
     id: 1,
     name: "Product",
@@ -313,7 +403,7 @@ const products = [
     image: "https://picsum.photos/1080/1080?random=Gaming+Laptop+32GB+1TB.webp",
   },
   // Add more products as needed
-];
+]; */
 </script>
 
 <style scoped>

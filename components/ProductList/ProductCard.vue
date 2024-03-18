@@ -27,7 +27,7 @@
             <SwiperSlide v-for="slide in images" :key="slide">
               <img
                 :src="slide.url"
-                class="py-2 object-contain"
+                class="py-2 object-contain w-[100%] h-[100%]"
                 :alt="productName"
               />
             </SwiperSlide>
