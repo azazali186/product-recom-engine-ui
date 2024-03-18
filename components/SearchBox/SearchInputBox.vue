@@ -194,10 +194,9 @@ const productSearch = async () => {
   try {
     const queryData = {};
     if (selected.value > 0) queryData.category_ids = selected.value;
-    if (search.value.length > 2) queryData.search = search.value;
+    queryData.search = search.value;
     const params = getQueryData(queryData);
     const url = "/search?" + params;
-    if (search.value.length > 2) {
       const res = await useCustomFetch({ url });
       console.log("res", res);
       prod.value = res?.data?.products?.list;
@@ -214,7 +213,6 @@ const productSearch = async () => {
       ) {
         data.value = true;
       }
-    }
   } catch (error) {
     console.log("err", error);
   }
