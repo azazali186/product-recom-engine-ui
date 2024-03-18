@@ -80,6 +80,8 @@ const priceSymbol = ref("$");
 
 const productName = ref("");
 
+const images = ref([]);
+
 onMounted(() => {
   if (product?.value?.price?.length > 0) {
     productPrice.value = product?.value.price[0].price;
@@ -94,11 +96,15 @@ onMounted(() => {
     productName.value = product.value.translations[0].name;
   }
 
+  if (product?.value?.images?.length > 0) {
+    images.value = [product?.value?.images[0]]
+  }
+
 });
 
 const url = "/products/" + product?.value?.slug;
 
-const images = product.value.images;
+
 
 var val = Math.floor(1000 + Math.random() * 10000);
 </script>
