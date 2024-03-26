@@ -1,18 +1,16 @@
 <template>
   <div :class="classes">
-    <LeftBanner :data="leftBannerImages" />
+    <span class="hidden md:block" >
+      <LeftBanner :data="leftBannerImages"  />
+    </span>
 
-    <MiddleContainer :shopInfo="store.shop" :banner="centerBannerImages" />
+    <span class="px-5">
+      <MiddleContainer :shopInfo="store.shop" :banner="centerBannerImages" />
+    </span>
 
-    <RightBanner :data="rightBannerImages" />
-
-    <!-- long left ad section done -->
-
-    <!-- long right ad section done -->
-
-    <!-- contact us banner  -->
-
-    <!-- right side middle setting icon for changing the theme color for store. -->
+    <span class="hidden md:block" >
+      <RightBanner :data="rightBannerImages" /> 
+    </span>
   </div>
 </template>
 
@@ -142,7 +140,6 @@ const shopInfo = ref({
     tags: ["Gaming", "Laptop", "Electronics", "TechEmpire"],
   },
 });
-
 
 useHead({
   title: `${shopInfo.value.name} ${shopInfo.value.description}`,

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="shop-mid-centainer w-full flex-col flex overflow-y-scroll hide-scrollbar"
+    class="shop-mid-centainer flex-col flex overflow-y-scroll hide-scrollbar"
     :style="{ background: bgColor }"
   >
     <!-- seller background and text color configuration load -->
@@ -18,7 +18,7 @@
     <UModal
       v-model="isOpen"
       :ui="{
-        base: 'min-w-[1200px]',
+        base: 'md:min-w-[1200px]',
         rounded: 'rounded-lg',
       }"
     >
@@ -26,7 +26,7 @@
     </UModal>
     <div class="absolute right-0 top-[50%]">
       <div
-        class="cursor-pointer rounded-full flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400 bg-green-400"
+        class="cursor-pointer hidden rounded-full md:flex justify-center items-center border-2 h-[50px] w-[50px] border-green-400 bg-green-400"
         :style="{
           borderColor: theme.theme.avtarRingColor,
           background: theme.theme.avtarRingColor,
@@ -75,10 +75,10 @@
             /></span>
           </div>
         </div>
-        <div class="w-[320px] h-[320px] pt-[70px] mr-[100px]">
+        <div class="w-[320px] h-[320px] md:pt-[70px] pt-[205px] mr-[70px]">
           <img
             :src="getShopInfo?.logo"
-            class="right-0 object-cover w-[320px] h-[320px] items-center justify-center rounded-full border-[10px]"
+            class="right-0 object-cover md:w-[320px] md:h-[320px] w-[70px] h-[70px] items-center justify-center rounded-full md:border-[10px] border-[2px]"
             :style="{ borderColor: theme.theme.avtarRingColor }"
             alt=""
           />
@@ -86,30 +86,8 @@
       </div>
     </div>
     <div class="mt-28">
-      <!-- <div class="prod-container mx-auto my-8">
-        <h1
-          class="text-4xl font-bold mb-4"
-          :style="{ color: theme.theme.hdColor }"
-        >
-          Product Catalogs
-        </h1>
-        <div class="product-container hide-scrollbar">
-          <div
-            v-for="(product, index) in products"
-            :key="index"
-            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
-          >
-            <img
-              :src="product.image"
-              :alt="product.name"
-              class="product-image"
-            />
-            <h2 class="product-name">Catalogue {{ index }}</h2>
-            <p class="product-price">${{ product.price.toFixed(2) }}</p>
-          </div>
-        </div>
-      </div> -->
-      <div class="prod-container mx-auto my-8">
+     
+      <div class="prod-container mx-auto my-8 py-2">
         <h1
           class="text-4xl font-bold mb-4"
           :style="{ color: theme.theme.hdColor }"
@@ -117,19 +95,7 @@
           Top Visited products
         </h1>
         <div class="product-container hide-scrollbar">
-          <!-- <div
-            v-for="(product, index) in products"
-            :key="index"
-            class="product-card shadow-green-400 cursor-pointer shadow-sm p-2 m-2 flex flex-col justify-around hover:shadow-md hover:shadow-blue-600"
-          >
-            <img
-              :src="product.image"
-              :alt="product.name"
-              class="product-image"
-            />
-            <h2 class="product-name">{{ product.name }}</h2>
-            <p class="product-price">${{ product.price.toFixed(2) }}</p>
-          </div> -->
+          
           <ProductCard
             v-if="visited?.length > 0"
             v-for="product in visited"

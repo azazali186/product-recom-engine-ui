@@ -408,7 +408,7 @@
   }
 
   .shop-mid-centainer{
-    width: 70%;
+    width: 100%;
     height: calc(100vh - 160px);
   }
   .login-card{
