@@ -16,8 +16,8 @@
       </div>
     </div> -->
 
-    <!-- <div class="header-right-menu">
-      <ULink to="/email">
+    <div class="header-right-menu">
+      <!-- <ULink to="/email">
         <span class="header-content font-bold">
           <IconsEmailAnimatedWithoutEmail class="text-2xl" />
         </span>
@@ -35,8 +35,8 @@
           src="https://avatars.githubusercontent.com/u/739984?v=4"
           alt="Avatar"
         />
-      </span>
-    </div> -->
+      </span> -->
+    </div>
   </div>
 </template>
 
