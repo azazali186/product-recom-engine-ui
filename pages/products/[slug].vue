@@ -1,52 +1,17 @@
 <template>
   <div class="flex justify-center">
     <div class="container flex flex-col mt-10">
-      <div class="flex gap-5">
-        <ImageSlider :data="productData" :title="productTitle" />
-        <TopDetails :data="productData" :sellerInfo="sellerInfo" />
+      <div class="flex flex-col md:flex-row md:gap-5">
+        <div class="md:w-1/2">
+          <ImageSlider :data="productData" :title="productTitle" />
+        </div>
+        <div class="md:w-1/2 pl-5">
+          <TopDetails :data="productData" :sellerInfo="sellerInfo" />
+        </div>
       </div>
-      <div>
+      <div class="pl-5">
         <ProductDetailsProductDesc :data="productDescription" />
       </div>
-      <!-- <div class="flex flex-col">
-        <div class="text-2xl font-bold text-center mt-10">
-          Recommended Products:
-        </div>
-        <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
-          <ProductCardVue v-for="product in products" :data="product" />
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="text-2xl font-bold text-center mt-10">
-          Top Selling Products:
-        </div>
-        <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
-          <ProductCardVue v-for="product in products" :data="product" />
-        </div>
-      </div> -->
-
-
-
-      <!-- <ProductDetailsWriteReview />
-      <div class="flex flex-col gap-5 pb-10 pt-5">
-        <div class="text-center text-2xl font-bold">
-          Customers Feedback: From 1 to 10
-        </div>
-        <div class="py-3" v-for="i in 10">
-          <ProductDetailsFeedbacks />
-        </div>
-      </div> -->
-
-
-
-      <!-- <div class="flex flex-col">
-        <div class="text-2xl font-bold text-center mt-10">
-          Relavent Products:
-        </div>
-        <div class="flex justify-center my-2 gap-10 relative flex-wrap mb-10">
-          <ProductCardVue v-for="product in products" :data="product" />
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
@@ -62,11 +27,11 @@ import productStore from "~/store/product";
 const route = useRoute();
 const productId = ref(route.params.slug);
 const seoData = ref({
-  title:"",
-  description:"",
-  keywords:[],
-  tags:[]
-})
+  title: "",
+  description: "",
+  keywords: [],
+  tags: [],
+});
 
 const sellerInfo = ref({
   name: "AdminShop",
@@ -78,8 +43,6 @@ const sellerInfo = ref({
   tg: "0965655136",
   wa: "0965655136",
 });
-
-
 
 const productData = ref({});
 const productTitle = ref("");
@@ -166,21 +129,23 @@ onMounted(async () => {
     });
     productData.value = res.data;
     productStore.selectedProduct = productData.value;
-    if(productData.value.created_by){
+    if (productData.value.created_by) {
       const shop = productData.value.created_by?.shop;
       sellerInfo.value = {
-        name : shop?.name,
+        name: shop?.name,
         slug: shop?.slug,
         ratings: shop?.ratings || 0,
-        logo: shop?.logo?.url || "https://avatars.githubusercontent.com/u/739984?v=4",
+        logo:
+          shop?.logo?.url ||
+          "https://avatars.githubusercontent.com/u/739984?v=4",
         contact: productData.value.created_by.mobile_number,
         fb: shop?.fb || "https://fb.com",
         tg: shop?.tg || productData.value.created_by.mobile_number,
         wa: shop?.wa || productData.value.created_by.mobile_number,
-      }
+      };
     }
 
-    console.log("shop info is onMounted ",sellerInfo.value)
+    console.log("shop info is onMounted ", sellerInfo.value);
     store.isLoading = false;
   } catch (error) {
     store.isLoading = false;
@@ -188,8 +153,7 @@ onMounted(async () => {
   store.isLoading = true;
 });
 
-console.log("shop info is ",sellerInfo.value)
-
+console.log("shop info is ", sellerInfo.value);
 
 useHead({
   title: `${product.value.title}`,
