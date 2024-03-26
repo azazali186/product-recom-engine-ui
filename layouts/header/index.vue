@@ -16,7 +16,7 @@
       </div>
     </div> -->
 
-    <div class="header-right-menu">
+    <!-- <div class="header-right-menu">
       <ULink to="/email">
         <span class="header-content font-bold">
           <IconsEmailAnimatedWithoutEmail class="text-2xl" />
@@ -36,7 +36,7 @@
           alt="Avatar"
         />
       </span>
-    </div>
+    </div> -->
   </div>
 </template>
 
